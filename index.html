@@ -33,6 +33,97 @@ and
 <p>ArXiv preprint: <a href="https://arxiv.org/abs/2404.04108">arXiv:2404.04108</a></p>
 <br>
 <p>(Currently under revision for the <a href="https://www.sciencedirect.com/journal/knowledge-based-systems">Knowledge-Based Systems</a> journal.)</p>
+</section><section>
+<h2 id="context-pt-1">Context (pt. 1)</h2>
+<h3 id="the-problem">The problem</h3>
+<ul>
+<li>
+<p>Many knowledge-based applications require <strong>structured data</strong> for their operation</p>
+</li>
+<li>
+<p>These systems commonly <strong>adapt</strong> their behaviour to the available data…</p>
+<ul>
+<li>… and acquire new data <strong>while</strong> operating</li>
+</ul>
+</li>
+<li>
+<p>Notable example: <strong>recommendation systems</strong></p>
+<ul>
+<li>providing <strong>hints</strong> to users based on their <strong>preferences</strong>…</li>
+<li>… and on the <strong>profiles</strong> of similar users</li>
+</ul>
+</li>
+<li>
+<p>Chicken-and-egg problem, namely the <strong>cold-start</strong>:</p>
+<ol>
+<li>the system need data to operate effectively</li>
+<li>the system acquires data while operating, from users</li>
+<li>at the beginning there’s no data, and no users</li>
+<li>how to escape this situation?</li>
+</ol>
+</li>
+</ul>
+</section><section>
+<h2 id="context-pt-2">Context (pt. 2)</h2>
+<h3 id="example">Example</h3>
+<p>As part of the CHIST-ERA IV project <a href="https://expectation.ehealth.hevs.ch/posts/home/">“Expectation”</a>, we needed to:</p>
+<ol>
+<li>
+<p>design a virtual coach for <strong>nutrition</strong></p>
+<ul>
+<li>giving personalised advices on <strong>what to eat when</strong> to users</li>
+</ul>
+</li>
+<li>
+<p>the system would need <strong>data</strong> about:</p>
+<ul>
+<li>food, e.g. recipes, their ingredients, their nutritional values, etc.</li>
+<li>users, e.g. their preferences and their habits, goals, medical issues, etc.</li>
+</ul>
+</li>
+<li>
+<p><strong>model</strong> the data schema and <strong>find</strong> some data matching it</p>
+</li>
+</ol>
+</section><section>
+<h2 id="context-pt-3">Context (pt. 3)</h2>
+<h3 id="the-insight">The insight</h3>
+<blockquote>
+<p>Obvious solution: <strong>generating</strong> (i.e., synthesizing) data</p>
+</blockquote>
+<br>
+<p>Yet, the generated data should:</p>
+<ul>
+<li>be <strong>syntactically</strong> valid, i.e. match the <strong>structure</strong> expected by the system</li>
+<li>be <strong>likely</strong>, and therefore <strong>meaningful</strong> for the system
+<ul>
+<li>in a nutshell: match the <strong>domain</strong> the system is going to be deployed into</li>
+</ul>
+</li>
+</ul>
+<h3 id="example-1">Example</h3>
+<ol>
+<li>Generate a schema for recipes and user profiles</li>
+<li>Design the business logic on top of that</li>
+<li>Generate data matching the schema</li>
+</ol>
+</section><section>
+<h2 id="background-pt-1">Background (pt. 1)</h2>
+<h3 id="ontologies">Ontologies</h3>
+<ul>
+<li>
+<p>Easy yet powerful means to represent <strong>knowledge</strong> in a structured way</p>
+<ul>
+<li>theoretically sound</li>
+<li>widely used in <strong>AI</strong> and <strong>knowledge engineering</strong></li>
+<li>technologically supported by the <strong>Semantic Web</strong> stack</li>
+</ul>
+</li>
+<li>
+<p>In a nutshell:</p>
+<p><img src="http://www.plantuml.com/plantuml/svg/TP2nJiCm48PtFyMDPN0Ve8gYLXLC81P6bcjoJTmwTdHs41MmLomy1y_1c_0acDWkNf2YvFwxx_wB_hNpo7uQj1YnEM97S4iTcHPU142ZqJdOMjFGwF_q_AugN1wNkAnh8I0pKBrALbtlPQ9MuARTNDxlOV7z_d4LuF3OtO4Q3ygqwacr4-govpm6jtykMDdAOcy5ocs2y_aSdEFHZ4IR4X1GR8AKB6LTW2FRaTYV7iqYNWOcZLvPuterpd_-9YuvNJ_ZC6eAGSLO7dfbEf74ngW1TH9RzAcwivCZ8MRqDokPmVY9hO2NEY-bUBmTSdaWvfCGMuofpACPZZAEGnCaophA5JGzEd8NkmvvhqYtMVFNvr1wvdbf79ayWKhgr0lkrXxTZUKGr9fCEmtw1m00" alt="Overview on ontologies"></p>
+</li>
+</ul>
 </section>
 
   
