@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/presentation-llm4kg/reveal-js/dist/reset.css">
 <link rel="stylesheet" href="/presentation-llm4kg/reveal-js/dist/reveal.css">
-  <link rel="stylesheet" href="/presentation-llm4kg/css/custom-theme.min.08c09c9c34eeb78ac3d9e64be85f5308e930fc66d6a014c2aa55cc4121a827eb.css" id="theme"><link rel="stylesheet" href="/presentation-llm4kg/highlight-js/solarized-dark.min.css">
+  <link rel="stylesheet" href="/presentation-llm4kg/css/custom-theme.min.8819225ba9045f059db0ec8e63c9fe9ecc945835383b0c2425763b28285adb6f.css" id="theme"><link rel="stylesheet" href="/presentation-llm4kg/highlight-js/solarized-dark.min.css">
 <link rel="stylesheet" href="https://gitcdn.link/repo/DanySK/css-blur-animation/master/blur.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto Mono" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Oxygen Mono" rel="stylesheet">
@@ -38,25 +38,25 @@ and
 <h3 id="the-problem">The problem</h3>
 <ul>
 <li>
-<p>Many knowledge-based applications require <strong>structured data</strong> for their operation</p>
+<p>Many knowledge-based applications require <em>structured data</em> for their operation</p>
 </li>
 <li>
-<p>These systems commonly <strong>adapt</strong> their behaviour to the available data…</p>
+<p>These systems commonly <em>adapt</em> their behaviour to the available data…</p>
 <ul>
-<li>… and acquire new data <strong>while</strong> operating</li>
+<li>… and acquire new data <em>while</em> operating</li>
 </ul>
 </li>
 <li>
-<p>Notable example: <strong>recommendation systems</strong></p>
+<p>Notable example: <em>recommendation systems</em></p>
 <ul>
-<li>providing <strong>hints</strong> to users based on their <strong>preferences</strong>…</li>
-<li>… and on the <strong>profiles</strong> of similar users</li>
+<li>providing <em>hints</em> to users based on their <em>preferences</em>…</li>
+<li>… and on the <em>profiles</em> of similar users</li>
 </ul>
 </li>
 <li>
-<p>Chicken-and-egg problem, namely the <strong>cold-start</strong>:</p>
+<p>Chicken-and-egg problem, namely the <em>cold-start</em>:</p>
 <ol>
-<li>the system need data to operate effectively</li>
+<li>the system needs data to operate effectively</li>
 <li>the system acquires data while operating, from users</li>
 <li>at the beginning there’s no data, and no users</li>
 <li>how to escape this situation?</li>
@@ -69,35 +69,35 @@ and
 <p>As part of the CHIST-ERA IV project <a href="https://expectation.ehealth.hevs.ch/posts/home/">“Expectation”</a>, we needed to:</p>
 <ol>
 <li>
-<p>design a virtual coach for <strong>nutrition</strong></p>
+<p>design a virtual coach for <em>nutrition</em></p>
 <ul>
-<li>giving personalised advices on <strong>what to eat when</strong> to users</li>
+<li>giving personalised advices on <em>what to eat when</em> to users</li>
 </ul>
 </li>
 <li>
-<p>the system would need <strong>data</strong> about:</p>
+<p>the system would need <em>data</em> about:</p>
 <ul>
 <li>food, e.g. recipes, their ingredients, their nutritional values, etc.</li>
 <li>users, e.g. their preferences and their habits, goals, medical issues, etc.</li>
 </ul>
 </li>
 <li>
-<p><strong>model</strong> the data schema and <strong>find</strong> some data matching it</p>
+<p><em>model</em> the data schema and <em>find</em> some data matching it</p>
 </li>
 </ol>
 </section><section>
 <h2 id="context-pt-3">Context (pt. 3)</h2>
 <h3 id="the-insight">The insight</h3>
 <blockquote>
-<p>Obvious solution: <strong>generating</strong> (i.e., synthesizing) data</p>
+<p>Obvious solution: <em>generating</em> (i.e., synthesizing) data</p>
 </blockquote>
 <br>
 <p>Yet, the generated data should:</p>
 <ul>
-<li>be <strong>syntactically</strong> valid, i.e. match the <strong>structure</strong> expected by the system</li>
-<li>be <strong>likely</strong>, and therefore <strong>meaningful</strong> for the system
+<li>be <em>syntactically</em> valid, i.e. match the <em>structure</em> expected by the system</li>
+<li>be <em>likely</em>, and therefore <em>meaningful</em> for the system
 <ul>
-<li>in a nutshell: match the <strong>domain</strong> the system is going to be deployed into</li>
+<li>in a nutshell: match the <em>domain</em> the system is going to be deployed into</li>
 </ul>
 </li>
 </ul>
@@ -108,22 +108,361 @@ and
 <li>Generate data matching the schema</li>
 </ol>
 </section><section>
+
+
+<section data-shortcode-section="">
 <h2 id="background-pt-1">Background (pt. 1)</h2>
 <h3 id="ontologies">Ontologies</h3>
 <ul>
 <li>
-<p>Easy yet powerful means to represent <strong>knowledge</strong> in a structured way</p>
+<p>Easy yet powerful means to represent <em>knowledge</em> in a structured way</p>
 <ul>
 <li>theoretically sound</li>
-<li>widely used in <strong>AI</strong> and <strong>knowledge engineering</strong></li>
-<li>technologically supported by the <strong>Semantic Web</strong> stack</li>
+<li>widely used in <em>AI</em> and <em>knowledge engineering</em></li>
+<li>good for engineering any sort of <em>data schema</em></li>
+<li>technologically supported by the <em>Semantic Web</em> stack (e.g. OWL, RDF, etc.)</li>
 </ul>
 </li>
 <li>
 <p>In a nutshell:</p>
-<p><img src="http://www.plantuml.com/plantuml/svg/TP2nJiCm48PtFyMDPN0Ve8gYLXLC81P6bcjoJTmwTdHs41MmLomy1y_1c_0acDWkNf2YvFwxx_wB_hNpo7uQj1YnEM97S4iTcHPU142ZqJdOMjFGwF_q_AugN1wNkAnh8I0pKBrALbtlPQ9MuARTNDxlOV7z_d4LuF3OtO4Q3ygqwacr4-govpm6jtykMDdAOcy5ocs2y_aSdEFHZ4IR4X1GR8AKB6LTW2FRaTYV7iqYNWOcZLvPuterpd_-9YuvNJ_ZC6eAGSLO7dfbEf74ngW1TH9RzAcwivCZ8MRqDokPmVY9hO2NEY-bUBmTSdaWvfCGMuofpACPZZAEGnCaophA5JGzEd8NkmvvhqYtMVFNvr1wvdbf79ayWKhgr0lkrXxTZUKGr9fCEmtw1m00" alt="Overview on ontologies"></p>
+<ul>
+<li><strong>concepts</strong> (a.k.a. <em>classes</em>) sets of <em>individuals</em> (a.k.a. <em>instances</em>)</li>
+<li><strong>roles</strong> (a.k.a. <em>properties</em>) binary <em>relations</em> between individuals</li>
+<li><strong>top</strong> and <strong>bottom</strong> concepts ($\top$ and $\bot$) for <em>universal</em> and <em>empty</em> sets
+<ul>
+<li>$\top$ (resp. $\bot$) is most commonly known as <code>Thing</code> (resp. <code>Nothing</code>)</li>
+</ul>
+</li>
+<li><strong>$\mathcal{ALC}$</strong> (and variants) is the most common <em>Description Logic</em> used for ontologies</li>
+</ul>
 </li>
 </ul>
+</section><section>
+<h2 id="background-pt-2">Background (pt. 2)</h2>
+<h3 id="ontologies-example">Ontologies example</h3>
+<div class="multiCol "><div style="width: 25%; "></div>
+<div style="width: 50%; "><p><img src="http://www.plantuml.com/plantuml/svg/TL11JiCm4Bpx5Nji3_O3eYXgLS49n8LZBsxYfcuTErexY0hw0IwyWtVm4rw2oTgjBqXHlBCxCxkQbGyImpGODihs97i53wfNjeCt1j0QwJrid6tL66vu_jUr52SXHTCm1fa3zJj7tHy2JwmA_BIRowSzB7u-FfUH73-tEwesWBQTVj7T94tPYoT5jtysEDxnGbU1zcjOLD6NLcO2cTp630eLS8wSDmKDdL5Rkt088xfHOJWljnQYNoori-K5GZIqwggYEs_AI6ONTatqxbKEer4nKWhm-Q1jpn9OMpr8ay16XbGzkiahncRgNwey4-cXLgINE8jIaC4DkJmgn3DZ6qdvpQEPJ936iGaSUKEmWlOWlV9NkrxYNYlJPOpVNqFfcUUbCN7o16fkKY-wEtVozmx9GQ1ewFoyTsxNmWXgbu8BModRJOFv1G00" alt="Overview on ontologies"></p>
+</div>
+<div style="width: 50%; "><p>In $\mathcal{ALC}$ Description Logic:</p>
+<ul>
+<li>$Animal \sqsubset \top$</li>
+<li>$Cat, Mouse \sqsubset Animal$</li>
+<li>$Cat \sqsubseteq \exists \mathsf{chases}.Mouse$</li>
+<li>$Mouse \sqsubseteq \exists \mathsf{cooksFor}.Cat$</li>
+<li>$\mathtt{tom}, \mathtt{garfield} : Cat$</li>
+<li>$\mathtt{jerry}, \mathtt{rémy} : Mouse$</li>
+<li>$\mathsf{chases}(\mathtt{tom}, \mathtt{jerry})$</li>
+<li>$\mathsf{cooksFor}(\mathtt{rémy}, \mathtt{garfield})$</li>
+</ul>
+</div>
+</div>
+</section><section>
+<h2 id="background-pt-3">Background (pt. 3)</h2>
+<h3 id="definitions-vs-assertions">Definitions vs. Assertions</h3>
+<ul>
+<li>
+<p><strong>Definitions</strong> are axioms defining concepts, roles, and their relationships</p>
+<ul>
+<li>these are called <strong>TBox</strong> (for <em>Terminological Box</em>) in $\mathcal{ALC}$</li>
+<li>examples:
+<ul>
+<li>$Animal \sqsubset \top$</li>
+<li>$Cat, Mouse \sqsubset Animal$</li>
+<li>$Cat \sqsubseteq \exists \mathsf{chases}.Mouse$</li>
+<li>$Mouse \sqsubseteq \exists \mathsf{cooksFor}.Cat$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Assertions</strong> are axioms assigning individuals to concepts or to roles</p>
+<ul>
+<li>these are called <strong>ABox</strong> (for <em>Assertional Box</em>) in $\mathcal{ALC}$</li>
+<li>examples:
+<ul>
+<li>$\mathtt{tom}, \mathtt{garfield} : Cat$</li>
+<li>$\mathtt{jerry}, \mathtt{rémy} : Mouse$</li>
+<li>$\mathsf{chases}(\mathtt{tom}, \mathtt{jerry})$</li>
+<li>$\mathsf{cooksFor}(\mathtt{rémy}, \mathtt{garfield})$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h2 id="background-pt-4">Background (pt. 4)</h2>
+<h3 id="how-are-ontologies-constructed">How are ontologies constructed?</h3>
+<p>Two possibly inter-leaved phases:</p>
+<ol>
+<li>
+<p><strong>“schema design”</strong> phase: defining concepts, roles, and their relationships</p>
+<ul>
+<li>i.e.: edit the <em>TBox</em></li>
+</ul>
+</li>
+<li>
+<p><strong>“population”</strong> phase: assigning individuals to concepts or to roles</p>
+<ul>
+<li>i.e.: edit the <em>ABox</em></li>
+</ul>
+</li>
+</ol>
+<br>
+<span class="fragment ">
+  <blockquote>
+<p>The ontology <strong>population</strong> problem is about <em>populating</em> an ontology with instances, i.e. <em>individuals</em></p>
+<ul>
+<li>this is often done <em>manually</em></li>
+<li>called “ontology <strong>learning</strong>” when done <em>(semi-)automatically</em> from data</li>
+</ul>
+</blockquote>
+</span>
+</section><section>
+<h2 id="background-pt-5">Background (pt. 5)</h2>
+<h3 id="about-ontology-population">About ontology population</h3>
+<ul>
+<li>
+<p><strong>Manual</strong> population:</p>
+<ul>
+<li><em>time-consuming</em> and <em>error-prone</em></li>
+<li>requires <em>domain experts</em> (most commonly communities)</li>
+<li>potentially very precise ($\approx$ adherent to reality)
+<ul>
+<li>and <em>high-quality</em> on the long run</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Automatic</strong> population:</p>
+<ul>
+<li><em>faster</em> and <em>less error-prone</em></li>
+<li>requires <em>datasets</em> or big <em>corpus of documents</em> (most commonly)</li>
+<li>often <strong>non</strong>-<em>incremental</em></li>
+</ul>
+</li>
+</ul>
+
+</section>
+</section><section>
+<h2 id="background-pt-6">Background (pt. 6)</h2>
+<h3 id="large-language-models-llms">Large Language Models (LLMs)</h3>
+<p><img src="./llm-concept.svg" alt="LLM concept"></p>
+<ul>
+<li>Text in (<strong>query</strong>, a.k.a. <em>prompt</em>) $\rightarrow$ Text out (<strong>response</strong>, a.k.a. <em>completion</em>)</li>
+<li><strong>Pre-trained</strong> on the <em>publicly accessible</em> Web (allegedly) $\Rightarrow$ plenty of <em>domain-specific</em> knowledge, for most domains</li>
+<li><strong>X-as-a-Service</strong> paradigm $\Rightarrow$ <em>pay-per-use</em> + <em>rate limits</em></li>
+<li><strong>Temperature</strong> parameter $\rightarrow$ regulates <em>creativity</em> ($\approx$ randomness) of the response</li>
+</ul>
+</section><section>
+<h2 id="contribution">Contribution</h2>
+<blockquote>
+<p><strong>Insight</strong>: replace domain experts with <em>large language models</em> (LLMs),
+<br>
+treating them as <strong>oracles</strong> for <em>automating</em> ontology population</p>
+</blockquote>
+<p>Let’s discuss <em>how</em>!</p>
+</section><section>
+<h2 id="problem-statement-pt-1">Problem statement (pt. 1)</h2>
+<ul>
+<li>
+<p>Stemming from:</p>
+<ol>
+<li>
+<p>a <em>partially</em>- (or, possibly, <em>non</em>-)instantiated <strong>ontology</strong> $\mathcal{O} = \mathcal{C} \cup \mathcal{P} \cup \mathcal{X}$ consisting of:</p>
+<ul>
+<li>a <em>non-empty</em> set of <strong>concept</strong> definitions $\mathcal{C}$</li>
+<li>a <em>non-empty</em> set of <strong>property</strong> definitions $\mathcal{P}$</li>
+<li>a <em>possibly-empty</em> set of <strong>assertions</strong> $\mathcal{X}$</li>
+</ul>
+</li>
+<li>
+<p>a <strong>subsumption</strong> (a.k.a. <em>sub-class</em>) <strong>relation</strong> $\sqsubseteq$ between concepts in $\mathcal{C}$</p>
+<ul>
+<li>spawning a <em>directed acyclic graph</em> (DAG) of concepts</li>
+</ul>
+</li>
+<li>
+<p>a trained LLM oracle $\mathcal{L}$</p>
+</li>
+<li>
+<p>a set of <strong>query templates</strong> $\mathcal{T}$ for generating prompts for $\mathcal{L}$</p>
+</li>
+</ol>
+</li>
+<li>
+<p>… produce $\mathcal{X}’ \sqsupset \mathcal{X}$ such that:</p>
+<ol>
+<li>$\mathcal{X}’$ contains <strong>novel</strong> individual and role assertions (w.r.t. $\mathcal{X}$)</li>
+<li>all assertions in $\mathcal{X}’$ are <strong>consistent</strong> w.r.t. $\mathcal{C}$ and $\mathcal{P}$, meaning that
+<ul>
+<li>each individual in $\mathcal{X}’$ is assigned to the <em>most adequate</em> concept in $\mathcal{C}$</li>
+<li>$\mathcal{X}’$ contains role assertions matching the properties in $\mathcal{P}$ <em>as well as</em> <strong>reality</strong></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</section><section>
+<h2 id="problem-statement-pt-2">Problem statement (pt. 2)</h2>
+<h3 id="example-2">Example</h3>
+
+<div class="multiCol "><div style="width: 25%; "></div>
+<div style="width: 25%; "><p><img src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuKhEIImkLWZ9oCnBvu9o7FCoSnDXCiw99L2MRtvfSIeN5rYfWasDhYvC8OG22u6K8_DXce322df5UdOGlfL2SaPYSMenMDX6BqSFBfoVdrtibb_4nLNBvP2Qbm9q8000" alt="Uninstantiated ontology"></p>
+</div>
+<div style="width: 10%; ">$\xrightarrow{\text{after}}$</div>
+<div style="width: 50%; "><p><img src="http://www.plantuml.com/plantuml/svg/JOxD3S8m38NlcI8BE0EWgYf2uiQD1K8R-aDIItPwG8A1c8F527KJzHI_zpw_kE5eAIx1gzPRPdqTnhbNcpZEOx0vETcuJHTSs2crehfw0MHG7h4IljTv2M-JQwEE6F8uEQAdKedN21siqGgBb3YP6WXgaGVT3fOTbxhUqdrqlikQlf-mxopvhbYOdEWA_EQbTiG7dv6amP2fvVpoxz-kZ3V5BWjlrRYvMuB_0G00" alt="Instantiated ontology"></p>
+</div>
+</div>
+</section><section>
+
+
+<section data-shortcode-section="">
+<h2 id="kgfiller">KgFiller</h2>
+<p>Our algorithm for <em>ontology population</em> through LLM, stepping through <strong>4 phases</strong>:</p>
+<ol>
+<li>
+<p><strong>population</strong> phase: each concept in $\mathcal{C}$ is <em>populated</em> with a set of individuals</p>
+</li>
+<li>
+<p><strong>relation</strong> phase: each property in $\mathcal{P}$ is <em>populated</em> with a set of role assertions</p>
+<ul>
+<li>as a by-product, some concepts may be <em>populated</em> even further</li>
+</ul>
+</li>
+<li>
+<p><strong>redistribution</strong> phase: some individuals are <em>reassigned</em> to more <strong>adequate</strong> concepts</p>
+</li>
+<li>
+<p><strong>merge</strong> phase: <em>similar</em> individuals are <em>merged</em> into a single one</p>
+<ul>
+<li>$\approx$ duplicates removal</li>
+</ul>
+</li>
+</ol>
+</section><section>
+<h2 id="about-templates">About templates</h2>
+<blockquote>
+<p><strong>Templates</strong> $\approx$ a string <em>named placeholders</em> to be <em>filled</em> with actual values via <em>interpolation</em></p>
+</blockquote>
+<ul>
+<li>think of them as C’s <code>printf</code> format strings
+<ul>
+<li>e.g. <code>"Hello &lt;WHO&gt;" / {WHO -&gt; "world!"} = "Hello world!"</code></li>
+</ul>
+</li>
+</ul>
+<br>
+<span class="fragment ">
+  <p>Each phase leverages templates of different sorts:</p>
+<ul>
+<li><strong>Individual seeking</strong> templates, e.g. <code>"Give me examples of &lt;CONCEPT&gt;"</code></li>
+<li><strong>Relation seeking</strong> templates, e.g. <code>"Give me examples of &lt;PROPERTY&gt; for &lt;INDIVIDUAL&gt;"</code></li>
+<li><strong>Best-match</strong> templates, e.g. <code>"What is the best concept for &lt;INDIVIDUAL&gt; among &lt;CONCEPTS&gt;?"</code></li>
+<li><strong>Individuals merging</strong> templates, e.g. <code>"Are &lt;INDIVIDUAL1&gt; and &lt;INDIVIDUAL2&gt; the same &lt;CONCEPT&gt;?"</code></li>
+</ul>
+</span>
+
+</section>
+</section><section>
+
+
+<section data-shortcode-section="">
+<h2 id="about-phases-pt-1">About phases (pt. 1)</h2>
+<h3 id="population-phase">Population phase</h3>
+<div class="multiCol "><!-- 
+<div style='width: 25%; '></div> -->
+<div style="width: 50%; "><p><img src="./phase-population.png" alt="Population phase pseudocode"></p>
+</div>
+<div style="width: 50%; "><ol>
+<li>
+<p>Focus on some class $R \in \mathcal{C}$ (most commonly <code>Thing</code>)</p>
+</li>
+<li>
+<p>For each sub-class $C$ of $R$ (<em>post-order-DFS</em> traversal):</p>
+<ol>
+<li>for each <em>individual seeking</em> template $t \in \mathcal{T}$:
+<ol>
+<li>using $t$, ask $\mathcal{L}$ for <em>individuals</em> of $C$</li>
+<li><em>add</em> the individuals to $\mathcal{X}'$</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+</section><section>
+<h2 id="about-phases-pt-2">About phases (pt. 2)</h2>
+<h3 id="relate-phase">Relate phase</h3>
+<div class="multiCol "><!-- 
+<div style='width: 25%; '></div> -->
+<div style="width: 50%; "><p><img src="./phase-relation.png" alt="Relation phase pseudocode"></p>
+</div>
+<div style="width: 50%; "><ol>
+<li>
+<p>Focus on some property $\mathsf{p} \in \mathcal{P}$</p>
+</li>
+<li>
+<p>Let $D$ (resp. $R$) be the <em>domain</em> (resp. <em>range</em>) of $\mathsf{p}$</p>
+</li>
+<li>
+<p>For each individual $\mathtt{i}$ in $D$:</p>
+<ol>
+<li>for each <em>relation seeking</em> template $t \in \mathcal{T}$:
+<ol>
+<li>using $t$, ask $\mathcal{L}$ for <em>individuals related</em> to $\mathtt{i}$ by $\mathsf{p}$</li>
+<li><em>add</em> the individuals to $R$</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+</section><section>
+<h2 id="about-phases-pt-3">About phases (pt. 3)</h2>
+<div class="multiCol "><!-- 
+<div style='width: 25%; '></div> -->
+<div style="width: 50%; "><p><img src="./phase-redistribution.png" alt="Redistribution phase pseudocode"></p>
+</div>
+<div style="width: 50%; "><ol>
+<li>
+<p>Focus on some class $R \in \mathcal{C}$ (most commonly <code>Thing</code>)</p>
+</li>
+<li>
+<p>Let $\mathcal{S}$ be the set of sub-classes of $R$</p>
+</li>
+<li>
+<p>For each individual $\mathtt{i}$ in $R$:</p>
+<ol>
+<li>for each <em>best-match</em> template $t \in \mathcal{T}$:
+<ol>
+<li>using $t$, ask $\mathcal{L}$ what is the <em>best class</em> for $\mathtt{i}$ among the ones in $\mathcal{S}$</li>
+<li><em>move</em> $\mathtt{i}$ to the best class</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>Repeat for all <em>direct</em> classes in $\mathcal{S}$</p>
+<ul>
+<li>(this implies a <em>pre-order</em>-DFS traversal)</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+</section><section>
+<h2 id="about-phases-pt-4">About phases (pt. 4)</h2>
+<div class="multiCol "><!-- 
+<div style='width: 25%; '></div> -->
+<div style="width: 50%; "><p><img src="./phase-merging.png" alt="Merging phase pseudocode"></p>
+</div>
+<div style="width: 50%; "></div>
+</div>
+
+</section>
 </section>
 
   
