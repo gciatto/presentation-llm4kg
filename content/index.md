@@ -33,17 +33,17 @@ ArXiv preprint: [arXiv:2404.04108](https://arxiv.org/abs/2404.04108)
 
 ### The problem
 
-- Many knowledge-based applications require __structured data__ for their operation
+- Many knowledge-based applications require _structured data_ for their operation
 
-- These systems commonly __adapt__ their behaviour to the available data...
-    + ... and acquire new data __while__ operating
+- These systems commonly _adapt_ their behaviour to the available data...
+    + ... and acquire new data _while_ operating
 
-- Notable example: __recommendation systems__
-    + providing __hints__ to users based on their __preferences__...
-    + ... and on the __profiles__ of similar users
+- Notable example: _recommendation systems_
+    + providing _hints_ to users based on their _preferences_...
+    + ... and on the _profiles_ of similar users
 
-- Chicken-and-egg problem, namely the __cold-start__:  
-    1. the system need data to operate effectively
+- Chicken-and-egg problem, namely the _cold-start_:  
+    1. the system needs data to operate effectively
     2. the system acquires data while operating, from users
     3. at the beginning there's no data, and no users
     4. how to escape this situation?
@@ -55,14 +55,14 @@ ArXiv preprint: [arXiv:2404.04108](https://arxiv.org/abs/2404.04108)
 
 As part of the CHIST-ERA IV project ["Expectation"](https://expectation.ehealth.hevs.ch/posts/home/), we needed to:
 
-1. design a virtual coach for __nutrition__
-    + giving personalised advices on __what to eat when__ to users
+1. design a virtual coach for _nutrition_
+    + giving personalised advices on _what to eat when_ to users
 
-2. the system would need __data__ about:
+2. the system would need _data_ about:
     + food, e.g. recipes, their ingredients, their nutritional values, etc.
     + users, e.g. their preferences and their habits, goals, medical issues, etc.
 
-3. __model__ the data schema and __find__ some data matching it
+3. _model_ the data schema and _find_ some data matching it
 
 ---
 
@@ -70,14 +70,14 @@ As part of the CHIST-ERA IV project ["Expectation"](https://expectation.ehealth.
 
 ### The insight
 
-> Obvious solution: __generating__ (i.e., synthesizing) data
+> Obvious solution: _generating_ (i.e., synthesizing) data
 
 <br>
 
 Yet, the generated data should:
-- be __syntactically__ valid, i.e. match the __structure__ expected by the system
-- be __likely__, and therefore __meaningful__ for the system
-    + in a nutshell: match the __domain__ the system is going to be deployed into
+- be _syntactically_ valid, i.e. match the _structure_ expected by the system
+- be _likely_, and therefore _meaningful_ for the system
+    + in a nutshell: match the _domain_ the system is going to be deployed into
 
 ### Example 
 
@@ -87,15 +87,305 @@ Yet, the generated data should:
 
 ---
 
+{{%section%}}
+
 ## Background (pt. 1)
 
 ### Ontologies
 
-- Easy yet powerful means to represent __knowledge__ in a structured way
+- Easy yet powerful means to represent _knowledge_ in a structured way
     + theoretically sound
-    + widely used in __AI__ and __knowledge engineering__
-    + technologically supported by the __Semantic Web__ stack
+    + widely used in _AI_ and _knowledge engineering_
+    + good for engineering any sort of _data schema_
+    + technologically supported by the _Semantic Web_ stack (e.g. OWL, RDF, etc.)
 
 - In a nutshell:
-    
-    ![Overview on ontologies](http://www.plantuml.com/plantuml/svg/TP2nJiCm48PtFyMDPN0Ve8gYLXLC81P6bcjoJTmwTdHs41MmLomy1y_1c_0acDWkNf2YvFwxx_wB_hNpo7uQj1YnEM97S4iTcHPU142ZqJdOMjFGwF_q_AugN1wNkAnh8I0pKBrALbtlPQ9MuARTNDxlOV7z_d4LuF3OtO4Q3ygqwacr4-govpm6jtykMDdAOcy5ocs2y_aSdEFHZ4IR4X1GR8AKB6LTW2FRaTYV7iqYNWOcZLvPuterpd_-9YuvNJ_ZC6eAGSLO7dfbEf74ngW1TH9RzAcwivCZ8MRqDokPmVY9hO2NEY-bUBmTSdaWvfCGMuofpACPZZAEGnCaophA5JGzEd8NkmvvhqYtMVFNvr1wvdbf79ayWKhgr0lkrXxTZUKGr9fCEmtw1m00)
+    + __concepts__ (a.k.a. _classes_) sets of _individuals_ (a.k.a. _instances_)
+    + __roles__ (a.k.a. _properties_) binary _relations_ between individuals
+    + __top__ and __bottom__ concepts ($\top$ and $\bot$) for _universal_ and _empty_ sets
+        * $\top$ (resp. $\bot$) is most commonly known as `Thing` (resp. `Nothing`)
+    + __$\mathcal{ALC}$__ (and variants) is the most common _Description Logic_ used for ontologies
+
+---
+
+## Background (pt. 2)
+
+### Ontologies example
+
+{{%multicol%}}
+{{%col 25 %}}{{%/col%}}
+{{%col%}}
+![Overview on ontologies](http://www.plantuml.com/plantuml/svg/TL11JiCm4Bpx5Nji3_O3eYXgLS49n8LZBsxYfcuTErexY0hw0IwyWtVm4rw2oTgjBqXHlBCxCxkQbGyImpGODihs97i53wfNjeCt1j0QwJrid6tL66vu_jUr52SXHTCm1fa3zJj7tHy2JwmA_BIRowSzB7u-FfUH73-tEwesWBQTVj7T94tPYoT5jtysEDxnGbU1zcjOLD6NLcO2cTp630eLS8wSDmKDdL5Rkt088xfHOJWljnQYNoori-K5GZIqwggYEs_AI6ONTatqxbKEer4nKWhm-Q1jpn9OMpr8ay16XbGzkiahncRgNwey4-cXLgINE8jIaC4DkJmgn3DZ6qdvpQEPJ936iGaSUKEmWlOWlV9NkrxYNYlJPOpVNqFfcUUbCN7o16fkKY-wEtVozmx9GQ1ewFoyTsxNmWXgbu8BModRJOFv1G00)
+{{%/col%}}
+{{%col%}}
+In $\mathcal{ALC}$ Description Logic:
+
+- $Animal \sqsubset \top$
+- $Cat, Mouse \sqsubset Animal$
+- $Cat \sqsubseteq \exists \mathsf{chases}.Mouse$
+- $Mouse \sqsubseteq \exists \mathsf{cooksFor}.Cat$
+- $\mathtt{tom}, \mathtt{garfield} : Cat$
+- $\mathtt{jerry}, \mathtt{rémy} : Mouse$
+- $\mathsf{chases}(\mathtt{tom}, \mathtt{jerry})$
+- $\mathsf{cooksFor}(\mathtt{rémy}, \mathtt{garfield})$
+{{%/col%}}
+{{%/multicol%}}
+
+---
+
+## Background (pt. 3)
+
+### Definitions vs. Assertions
+
+- __Definitions__ are axioms defining concepts, roles, and their relationships
+    + these are called __TBox__ (for _Terminological Box_) in $\mathcal{ALC}$
+    + examples:
+        * $Animal \sqsubset \top$
+        * $Cat, Mouse \sqsubset Animal$
+        * $Cat \sqsubseteq \exists \mathsf{chases}.Mouse$
+        * $Mouse \sqsubseteq \exists \mathsf{cooksFor}.Cat$
+
+- __Assertions__ are axioms assigning individuals to concepts or to roles
+    + these are called __ABox__ (for _Assertional Box_) in $\mathcal{ALC}$
+    + examples:
+        * $\mathtt{tom}, \mathtt{garfield} : Cat$
+        * $\mathtt{jerry}, \mathtt{rémy} : Mouse$
+        * $\mathsf{chases}(\mathtt{tom}, \mathtt{jerry})$
+        * $\mathsf{cooksFor}(\mathtt{rémy}, \mathtt{garfield})$
+
+---
+
+## Background (pt. 4)
+
+### How are ontologies constructed?
+
+Two possibly inter-leaved phases:
+
+1. __"schema design"__ phase: defining concepts, roles, and their relationships
+    + i.e.: edit the _TBox_
+
+2. __"population"__ phase: assigning individuals to concepts or to roles
+    + i.e.: edit the _ABox_
+
+<br/>
+
+{{%fragment%}}
+
+> The ontology __population__ problem is about _populating_ an ontology with instances, i.e. _individuals_
+> - this is often done _manually_ 
+> - called "ontology __learning__" when done _(semi-)automatically_ from data
+
+{{%/fragment%}}
+
+---
+
+## Background (pt. 5)
+
+### About ontology population
+
+- __Manual__ population:
+    + _time-consuming_ and _error-prone_
+    + requires _domain experts_ (most commonly communities)
+    + potentially very precise ($\approx$ adherent to reality)
+        + and _high-quality_ on the long run
+
+- __Automatic__ population:
+    + _faster_ and _less error-prone_
+    + requires _datasets_ or big _corpus of documents_ (most commonly)
+    + often __non__-_incremental_ 
+
+{{%/section%}}
+
+--- 
+
+## Background (pt. 6)
+
+### Large Language Models (LLMs)
+
+![LLM concept](./llm-concept.svg)
+
+- Text in (__query__, a.k.a. _prompt_) $\rightarrow$ Text out (__response__, a.k.a. _completion_)
+- __Pre-trained__ on the _publicly accessible_ Web (allegedly) $\Rightarrow$ plenty of _domain-specific_ knowledge, for most domains 
+- __X-as-a-Service__ paradigm $\Rightarrow$ _pay-per-use_ + _rate limits_
+- __Temperature__ parameter $\rightarrow$ regulates _creativity_ ($\approx$ randomness) of the response
+
+---
+
+## Contribution
+
+> __Insight__: replace domain experts with _large language models_ (LLMs),
+> <br/>
+> treating them as __oracles__ for _automating_ ontology population
+
+Let's discuss _how_!
+
+---
+
+## Problem statement (pt. 1)
+
++ Stemming from:
+    1. a _partially_- (or, possibly, _non_-)instantiated __ontology__ $\mathcal{O} = \mathcal{C} \cup \mathcal{P} \cup \mathcal{X}$ consisting of:
+        + a _non-empty_ set of __concept__ definitions $\mathcal{C}$
+        + a _non-empty_ set of __property__ definitions $\mathcal{P}$
+        + a _possibly-empty_ set of __assertions__ $\mathcal{X}$ 
+
+    2. a __subsumption__ (a.k.a. _sub-class_) __relation__ $\sqsubseteq$ between concepts in $\mathcal{C}$
+        + spawning a _directed acyclic graph_ (DAG) of concepts
+
+    3. a trained LLM oracle $\mathcal{L}$
+
+    4. a set of __query templates__ $\mathcal{T}$ for generating prompts for $\mathcal{L}$
+
++ ... produce $\mathcal{X}' \sqsupset \mathcal{X}$ such that:
+    1. $\mathcal{X}'$ contains __novel__ individual and role assertions (w.r.t. $\mathcal{X}$)
+    2. all assertions in $\mathcal{X}'$ are __consistent__ w.r.t. $\mathcal{C}$ and $\mathcal{P}$, meaning that
+        + each individual in $\mathcal{X}'$ is assigned to the _most adequate_ concept in $\mathcal{C}$
+        + $\mathcal{X}'$ contains role assertions matching the properties in $\mathcal{P}$ _as well as_ __reality__
+
+---
+
+## Problem statement (pt. 2)
+
+### Example
+
+{{%multicol%}}
+{{%col 25%}}{{%/col %}}
+{{%col 25%}}
+![Uninstantiated ontology](http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuKhEIImkLWZ9oCnBvu9o7FCoSnDXCiw99L2MRtvfSIeN5rYfWasDhYvC8OG22u6K8_DXce322df5UdOGlfL2SaPYSMenMDX6BqSFBfoVdrtibb_4nLNBvP2Qbm9q8000)
+{{%/col%}}
+{{%col 10%}}$\xrightarrow{\text{after}}${{%/col %}}
+{{%col %}}
+![Instantiated ontology](http://www.plantuml.com/plantuml/svg/JOxD3S8m38NlcI8BE0EWgYf2uiQD1K8R-aDIItPwG8A1c8F527KJzHI_zpw_kE5eAIx1gzPRPdqTnhbNcpZEOx0vETcuJHTSs2crehfw0MHG7h4IljTv2M-JQwEE6F8uEQAdKedN21siqGgBb3YP6WXgaGVT3fOTbxhUqdrqlikQlf-mxopvhbYOdEWA_EQbTiG7dv6amP2fvVpoxz-kZ3V5BWjlrRYvMuB_0G00)
+{{%/col%}}
+{{%/multicol%}}
+
+---
+
+{{%section%}}
+
+## KgFiller
+
+Our algorithm for _ontology population_ through LLM, stepping through __4 phases__:
+
+1. __population__ phase: each concept in $\mathcal{C}$ is _populated_ with a set of individuals
+
+2. __relation__ phase: each property in $\mathcal{P}$ is _populated_ with a set of role assertions
+    + as a by-product, some concepts may be _populated_ even further
+
+3. __redistribution__ phase: some individuals are _reassigned_ to more __adequate__ concepts
+
+4. __merge__ phase: _similar_ individuals are _merged_ into a single one
+    + $\approx$ duplicates removal
+
+---
+
+## About templates
+
+> __Templates__ $\approx$ a string _named placeholders_ to be _filled_ with actual values via _interpolation_
++ think of them as C's `printf` format strings
+    + e.g. `"Hello <WHO>" / {WHO -> "world!"} = "Hello world!"`
+
+<br/>
+
+{{%fragment%}}
+
+Each phase leverages templates of different sorts:
+
+- __Individual seeking__ templates, e.g. `"Give me examples of <CONCEPT>"`
+- __Relation seeking__ templates, e.g. `"Give me examples of <PROPERTY> for <INDIVIDUAL>"`
+- __Best-match__ templates, e.g. `"What is the best concept for <INDIVIDUAL> among <CONCEPTS>?"`
+- __Individuals merging__ templates, e.g. `"Are <INDIVIDUAL1> and <INDIVIDUAL2> the same <CONCEPT>?"`
+
+
+{{%/fragment%}}
+
+{{%/section%}}
+
+---
+
+{{%section%}}
+
+## About phases (pt. 1)
+
+### Population phase
+
+{{%multicol%}}
+<!-- {{%col 25%}}{{%/col%}} -->
+{{%col%}}
+![Population phase pseudocode](./phase-population.png)
+{{%/col%}}
+{{%col%}}
+1. Focus on some class $R \in \mathcal{C}$ (most commonly `Thing`)
+
+2. For each sub-class $C$ of $R$ (_post-order-DFS_ traversal):
+    1. for each _individual seeking_ template $t \in \mathcal{T}$:
+        1. using $t$, ask $\mathcal{L}$ for _individuals_ of $C$ 
+        3. _add_ the individuals to $\mathcal{X}'$ 
+
+{{%/col%}}
+{{%/multicol%}}
+
+---
+
+## About phases (pt. 2)
+
+### Relate phase
+
+{{%multicol%}}
+<!-- {{%col 25%}}{{%/col%}} -->
+{{%col%}}
+![Relation phase pseudocode](./phase-relation.png)
+{{%/col%}}
+{{%col%}}
+1. Focus on some property $\mathsf{p} \in \mathcal{P}$ 
+
+2. Let $D$ (resp. $R$) be the _domain_ (resp. _range_) of $\mathsf{p}$
+
+3. For each individual $\mathtt{i}$ in $D$: 
+    1. for each _relation seeking_ template $t \in \mathcal{T}$:
+        1. using $t$, ask $\mathcal{L}$ for _individuals related_ to $\mathtt{i}$ by $\mathsf{p}$
+        2. _add_ the individuals to $R$
+
+{{%/col%}}
+{{%/multicol%}}
+
+---
+
+## About phases (pt. 3)
+
+{{%multicol%}}
+<!-- {{%col 25%}}{{%/col%}} -->
+{{%col%}}
+![Redistribution phase pseudocode](./phase-redistribution.png)
+{{%/col%}}
+{{%col%}}
+1. Focus on some class $R \in \mathcal{C}$ (most commonly `Thing`)
+
+2. Let $\mathcal{S}$ be the set of sub-classes of $R$
+
+3. For each individual $\mathtt{i}$ in $R$: 
+    1. for each _best-match_ template $t \in \mathcal{T}$:
+        1. using $t$, ask $\mathcal{L}$ what is the _best class_ for $\mathtt{i}$ among the ones in $\mathcal{S}$
+        2. _move_ $\mathtt{i}$ to the best class
+
+4. Repeat for all _direct_ classes in $\mathcal{S}$
+    + (this implies a _pre-order_-DFS traversal)
+
+{{%/col%}}
+{{%/multicol%}}
+
+---
+
+## About phases (pt. 4)
+
+{{%multicol%}}
+<!-- {{%col 25%}}{{%/col%}} -->
+{{%col%}}
+![Merging phase pseudocode](./phase-merging.png)
+{{%/col%}}
+{{%col%}}
+
+{{%/col%}}
+{{%/multicol%}}
+
+{{%/section%}}
