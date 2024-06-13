@@ -19,6 +19,9 @@ aliases = [
 and
 [Andrea Omicini](https://www.unibo.it/sitoweb/Andrea.Omicini/en)
 
+[Dept. of Computer Science and Engineering](https://disi.unibo.it/en) (DISI),
+Alma Mater Studiorum - [Università di Bologna](https://www.unibo.it/en/), Italy
+
 <br/>
 
 ArXiv preprint: [arXiv:2404.04108](https://arxiv.org/abs/2404.04108) 
