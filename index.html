@@ -381,9 +381,9 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 <li>
 <p>For each sub-class $C$ of $R$ (<em>post-order-DFS</em> traversal):</p>
 <ol>
-<li>for each <em>individual seeking</em> template $t \in \mathcal{T}$:
+<li>using some <em>individual seeking</em> template $t \in \mathcal{T}$:
 <ol>
-<li>using $t$, ask $\mathcal{L}$ for <em>individuals</em> of $C$</li>
+<li>ask $\mathcal{L}$ for <em>individuals</em> of $C$</li>
 <li><em>add</em> the individuals to $\mathcal{X}'$</li>
 </ol>
 </li>
@@ -409,9 +409,9 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 <li>
 <p>For each individual $\mathtt{i}$ in $D$:</p>
 <ol>
-<li>for each <em>relation seeking</em> template $t \in \mathcal{T}$:
+<li>using some <em>relation seeking</em> template $t \in \mathcal{T}$:
 <ol>
-<li>using $t$, ask $\mathcal{L}$ for <em>individuals related</em> to $\mathtt{i}$ by $\mathsf{p}$</li>
+<li>ask $\mathcal{L}$ for <em>individuals related</em> to $\mathtt{i}$ by $\mathsf{p}$</li>
 <li><em>add</em> the individuals to $R$</li>
 </ol>
 </li>
@@ -431,14 +431,14 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 <p>Focus on some class $R \in \mathcal{C}$ (most commonly <code>Thing</code>)</p>
 </li>
 <li>
-<p>Let $\mathcal{S}$ be the set of sub-classes of $R$</p>
+<p>Let $\mathcal{S}$ be the set of all <em>direct</em> sub-classes of $R$</p>
 </li>
 <li>
 <p>For each individual $\mathtt{i}$ in $R$:</p>
 <ol>
-<li>for each <em>best-match</em> template $t \in \mathcal{T}$:
+<li>using some <em>best-match</em> template $t \in \mathcal{T}$:
 <ol>
-<li>using $t$, ask $\mathcal{L}$ what is the <em>best class</em> for $\mathtt{i}$ among the ones in $\mathcal{S}$</li>
+<li>ask $\mathcal{L}$ what is the <em>best class</em> for $\mathtt{i}$ among the ones in $\mathcal{S}$</li>
 <li><em>move</em> $\mathtt{i}$ to the best class</li>
 </ol>
 </li>
@@ -459,8 +459,165 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 <div style='width: 25%; '></div> -->
 <div style="width: 50%; "><p><img src="./phase-merging.png" alt="Merging phase pseudocode"></p>
 </div>
-<div style="width: 50%; "></div>
+<div style="width: 50%; "><ol>
+<li>
+<p>Focus on some class $R \in \mathcal{C}$ (most commonly <code>Thing</code>)</p>
+</li>
+<li>
+<p>For each sub-class $C$ of $R$:</p>
+<ol>
+<li>for each <em>pair</em> of <em>syntactically-similar</em> individuals ${\mathtt{i}, \mathtt{j}}$:
+<ol>
+<li>using some <em>individual-mergin</em> template $t \in \mathcal{T}$:
+<ol>
+<li>ask $\mathcal{L}$ if $\mathtt{i}$ and $\mathtt{j}$ are the <em>semantically-similar</em></li>
+<li>if so, <em>merge</em> $\mathtt{i}$ and $\mathtt{j}$ in $\mathcal{X}'$</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
 </div>
+</div>
+
+</section>
+</section><section>
+
+
+<section data-shortcode-section="">
+<h2 id="practical-aspects">Practical aspects</h2>
+<h3 id="prompt-engineering-pt-1">Prompt-engineering (pt. 1)</h3>
+<blockquote>
+<p><strong>Problem</strong>: queries may produce <em>verbose</em> and <em>arbitrarily-structured</em> responses, which are <em>costly</em> and hard to <em>parse</em></p>
+</blockquote>
+<ul>
+<li>Q: <code>"can you generate examples of cats?"</code></li>
+<li>A:
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape=""><span style="display:flex;"><span>Certainly! While I can't physically generate images, I can certainly describe or provide information about different 
+</span></span><span style="display:flex;"><span>types of cats. 
+</span></span><span style="display:flex;"><span>Here are a few examples:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>1. Domestic Shorthair:
+</span></span><span style="display:flex;"><span>    Description: A common and popular cat breed known for its short, sleek coat.
+</span></span><span style="display:flex;"><span>    Characteristics: Versatile in colors and patterns, friendly, and adaptable.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>2. Siamese Cat:
+</span></span><span style="display:flex;"><span>    Description: Elegant and slender cat with distinctive color points.
+</span></span><span style="display:flex;"><span>    Characteristics: Vocal, social, and known for their striking blue almond-shaped eyes.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>10. Russian Blue:
+</span></span><span style="display:flex;"><span>    Description: Short-haired cat with a bluish-gray coat and striking green eyes.
+</span></span><span style="display:flex;"><span>    Characteristics: Reserved but affectionate, known for its plush double coat.
+</span></span></code></pre></div></li>
+</ul>
+</section><section>
+<h2 id="practical-aspects-1">Practical aspects</h2>
+<h3 id="prompt-engineering-pt-2">Prompt-engineering (pt. 2)</h3>
+<blockquote>
+<p><strong>Solution</strong>: queries should explicitly ask for <strong>conciseness</strong> and <strong>structure</strong> to <em>spend less</em> <br> and <em>simplify parsing</em> the response</p>
+</blockquote>
+<ul>
+<li>Q: <code>"list of cat races, names only"</code></li>
+<li>A:
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape=""><span style="display:flex;"><span>Certainly, here's a list of cat breeds with names only:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>1. Persian
+</span></span><span style="display:flex;"><span>2. Siamese
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>10. Domestic Shorthair
+</span></span></code></pre></div></li>
+</ul>
+</section><section>
+<h2 id="practical-aspects-2">Practical aspects</h2>
+<h3 id="avoiding-out-of-context-responses">Avoiding out-of-context responses</h3>
+<blockquote>
+<p><strong>Problem</strong>: the query may be clear for the user, but <em>ambiguous</em> for the LLM,
+<br> which may lead to <em>out-of-context</em> responses</p>
+</blockquote>
+<ul>
+<li>Q: <code>"give me a list of examples of cats"</code></li>
+<li>A:
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape=""><span style="display:flex;"><span>Certainly! Here are some examples of cats:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>1. Cat Stevens
+</span></span><span style="display:flex;"><span>2. Catwoman
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>10. Cat in the Hat
+</span></span></code></pre></div></li>
+</ul>
+</section><section>
+<h2 id="practical-aspects-3">Practical aspects</h2>
+<h3 id="avoiding-out-of-context-responses-1">Avoiding out-of-context responses</h3>
+<blockquote>
+<p><strong>Solution</strong>: provide the context <em>explicitly</em> in the query
+<br> Beware! <em>Two</em> contexts are always in place:</p>
+<ol>
+<li>the <em>domain</em> of the ontology</li>
+<li>the <em>ontological</em> jargon itself</li>
+</ol>
+</blockquote>
+<ul>
+<li>Q: <code>"you're a zoologist creating and ontology about animals species. give me a list of examples of cats"</code></li>
+<li>A:
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape=""><span style="display:flex;"><span>Certainly! Here are some examples of cat breeds:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>1. Persian
+</span></span><span style="display:flex;"><span>2. Siamese
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>10. Domestic Shorthair
+</span></span></code></pre></div></li>
+</ul>
+</section><section>
+<h2 id="practical-aspects-4">Practical aspects</h2>
+<h3 id="mining-relevant-information-from-responses">Mining relevant information from responses</h3>
+<blockquote>
+<p><strong>Problem</strong>: responses contain <em>way more</em> information than needed, in <em>unstructured</em> form</p>
+</blockquote>
+<p><img src="./response.png" alt="Example of partially structured response"></p>
+<ol>
+<li><code>Persian</code>, 2. <code>Siamese</code>, 3. <code>Maine Coon</code>, 4. <code>Bengal</code>, 5. <code>Caracal</code>, 6. <code>Sphinx</code>, …, 10. <code>Domestic Shorthair</code></li>
+</ol>
+</section><section>
+<h2 id="practical-aspects-5">Practical aspects</h2>
+<h3 id="mining-relevant-information-from-responses-1">Mining relevant information from responses</h3>
+<blockquote>
+<p><strong>Solution</strong>: <em>parse</em> the response to <em>extract</em> the relevant information</p>
+</blockquote>
+<div class="multiCol "><div style="width: 50%; "><p><img src="parsing-grammar.png" alt="Grammar for parsing responses"></p>
+</div>
+<div style="width: 50%; "><p><img src="./parse-tree.svg" alt="Example of parse tree for the response in the previous slide according to this grammar"></p>
+</div>
+</div>
+</section><section>
+<h2 id="practical-aspects-6">Practical aspects</h2>
+<h3 id="minimising-financial-costs">Minimising financial costs</h3>
+<blockquote>
+<p><strong>Problem</strong>: cost model is most commonly <em>proportional</em> to <strong>consumed</strong> <em>and</em> <strong>produced</strong> <em>tokens</em> (words)</p>
+</blockquote>
+<span class="fragment ">
+  <blockquote>
+<p><strong>Solution</strong>: ask for <em>conciseness</em> + <em>limit</em> responses’ lengths + exploit <em>caching</em></p>
+</blockquote>
+<ul>
+<li>most <em>API</em> support some <code>max_tokens</code>-like parameter</li>
+<li>simple <em>cache mechanism</em> can be implemented, using <em>prompt</em> + <em>parameters</em> as <strong>key</strong></li>
+</ul>
+</span>
+</section><section>
+<h2 id="practical-aspects-7">Practical aspects</h2>
+<h3 id="handling-rate-limitations">Handling rate limitations</h3>
+<blockquote>
+<p><strong>Problem</strong>: most LLM services apply <em>rate limitations</em> on a <strong>per-tokens</strong> or <strong>per-requests</strong> basis</p>
+</blockquote>
+<span class="fragment ">
+  <blockquote>
+<p><strong>Solution</strong>: apply <a href="https://en.wikipedia.org/wiki/Exponential_backoff">exponential back-off</a> <em>retrial</em> strategy + limit of <em>retries</em></p>
+</blockquote>
+</span>
 
 </section>
 </section>
