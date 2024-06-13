@@ -318,8 +318,8 @@ Each phase leverages templates of different sorts:
 1. Focus on some class $R \in \mathcal{C}$ (most commonly `Thing`)
 
 2. For each sub-class $C$ of $R$ (_post-order-DFS_ traversal):
-    1. for each _individual seeking_ template $t \in \mathcal{T}$:
-        1. using $t$, ask $\mathcal{L}$ for _individuals_ of $C$ 
+    1. using some _individual seeking_ template $t \in \mathcal{T}$:
+        1. ask $\mathcal{L}$ for _individuals_ of $C$ 
         3. _add_ the individuals to $\mathcal{X}'$ 
 
 {{%/col%}}
@@ -342,8 +342,8 @@ Each phase leverages templates of different sorts:
 2. Let $D$ (resp. $R$) be the _domain_ (resp. _range_) of $\mathsf{p}$
 
 3. For each individual $\mathtt{i}$ in $D$: 
-    1. for each _relation seeking_ template $t \in \mathcal{T}$:
-        1. using $t$, ask $\mathcal{L}$ for _individuals related_ to $\mathtt{i}$ by $\mathsf{p}$
+    1. using some _relation seeking_ template $t \in \mathcal{T}$:
+        1. ask $\mathcal{L}$ for _individuals related_ to $\mathtt{i}$ by $\mathsf{p}$
         2. _add_ the individuals to $R$
 
 {{%/col%}}
@@ -361,11 +361,11 @@ Each phase leverages templates of different sorts:
 {{%col%}}
 1. Focus on some class $R \in \mathcal{C}$ (most commonly `Thing`)
 
-2. Let $\mathcal{S}$ be the set of sub-classes of $R$
+2. Let $\mathcal{S}$ be the set of all _direct_ sub-classes of $R$
 
 3. For each individual $\mathtt{i}$ in $R$: 
-    1. for each _best-match_ template $t \in \mathcal{T}$:
-        1. using $t$, ask $\mathcal{L}$ what is the _best class_ for $\mathtt{i}$ among the ones in $\mathcal{S}$
+    1. using some _best-match_ template $t \in \mathcal{T}$:
+        1. ask $\mathcal{L}$ what is the _best class_ for $\mathtt{i}$ among the ones in $\mathcal{S}$
         2. _move_ $\mathtt{i}$ to the best class
 
 4. Repeat for all _direct_ classes in $\mathcal{S}$
@@ -384,8 +384,171 @@ Each phase leverages templates of different sorts:
 ![Merging phase pseudocode](./phase-merging.png)
 {{%/col%}}
 {{%col%}}
+1. Focus on some class $R \in \mathcal{C}$ (most commonly `Thing`)
+
+2. For each sub-class $C$ of $R$:
+    1. for each _pair_ of _syntactically-similar_ individuals ${\mathtt{i}, \mathtt{j}}$:
+        1. using some _individual-mergin_ template $t \in \mathcal{T}$:
+            1. ask $\mathcal{L}$ if $\mathtt{i}$ and $\mathtt{j}$ are the _semantically-similar_
+            2. if so, _merge_ $\mathtt{i}$ and $\mathtt{j}$ in $\mathcal{X}'$
 
 {{%/col%}}
 {{%/multicol%}}
+
+{{%/section%}}
+
+---
+
+{{%section%}}
+
+## Practical aspects
+
+### Prompt-engineering (pt. 1)
+
+> __Problem__: queries may produce _verbose_ and _arbitrarily-structured_ responses, which are _costly_ and hard to _parse_
+
+- Q: `"can you generate examples of cats?"`
+- A: 
+    ```text
+    Certainly! While I can't physically generate images, I can certainly describe or provide information about different 
+    types of cats. 
+    Here are a few examples:
+    
+    1. Domestic Shorthair:
+        Description: A common and popular cat breed known for its short, sleek coat.
+        Characteristics: Versatile in colors and patterns, friendly, and adaptable.
+    
+    2. Siamese Cat:
+        Description: Elegant and slender cat with distinctive color points.
+        Characteristics: Vocal, social, and known for their striking blue almond-shaped eyes.
+    
+    ...
+    
+    10. Russian Blue:
+        Description: Short-haired cat with a bluish-gray coat and striking green eyes.
+        Characteristics: Reserved but affectionate, known for its plush double coat.
+    ```
+
+---
+
+## Practical aspects
+
+### Prompt-engineering (pt. 2)
+
+> __Solution__: queries should explicitly ask for __conciseness__ and __structure__ to _spend less_ <br/> and _simplify parsing_ the response
+
+- Q: `"list of cat races, names only"`
+- A: 
+    ```text
+    Certainly, here's a list of cat breeds with names only:
+
+    1. Persian
+    2. Siamese
+    ...
+    10. Domestic Shorthair
+    ```
+
+---
+
+## Practical aspects
+
+### Avoiding out-of-context responses
+
+> __Problem__: the query may be clear for the user, but _ambiguous_ for the LLM, 
+> <br/> which may lead to _out-of-context_ responses
+
+- Q: `"give me a list of examples of cats"`
+- A: 
+    ```text
+    Certainly! Here are some examples of cats:
+
+    1. Cat Stevens
+    2. Catwoman
+    ...
+    10. Cat in the Hat
+    ```
+
+---
+
+## Practical aspects
+
+### Avoiding out-of-context responses
+
+> __Solution__: provide the context _explicitly_ in the query
+> <br/> Beware! _Two_ contexts are always in place:
+> 1. the _domain_ of the ontology
+> 2. the _ontological_ jargon itself
+
+- Q: `"you're a zoologist creating and ontology about animals species. give me a list of examples of cats"`
+- A: 
+    ```text
+    Certainly! Here are some examples of cat breeds:
+
+    1. Persian
+    2. Siamese
+    ...
+    10. Domestic Shorthair
+    ```
+
+---
+
+## Practical aspects
+
+### Mining relevant information from responses
+
+> __Problem__: responses contain _way more_ information than needed, in _unstructured_ form
+
+![Example of partially structured response](./response.png)
+
+1. `Persian`, 2. `Siamese`, 3. `Maine Coon`, 4. `Bengal`, 5. `Caracal`, 6. `Sphinx`, ..., 10. `Domestic Shorthair`
+
+--- 
+
+## Practical aspects
+
+### Mining relevant information from responses
+
+> __Solution__: _parse_ the response to _extract_ the relevant information
+
+{{%multicol%}}
+{{%col%}}
+![Grammar for parsing responses](parsing-grammar.png)
+{{%/col%}}
+{{%col%}}
+![Example of parse tree for the response in the previous slide according to this grammar](./parse-tree.svg)
+{{%/col%}}
+{{%/multicol%}}
+
+--- 
+
+## Practical aspects
+
+### Minimising financial costs
+
+> __Problem__: cost model is most commonly _proportional_ to __consumed__ _and_ __produced__ _tokens_ (words)
+
+{{%fragment%}}
+
+> __Solution__: ask for _conciseness_ + _limit_ responses' lengths + exploit _caching_
+
++ most _API_ support some `max_tokens`-like parameter
++ simple _cache mechanism_ can be implemented, using _prompt_ + _parameters_ as __key__
+
+{{%/fragment%}}
+
+---
+
+## Practical aspects
+
+### Handling rate limitations
+
+> __Problem__: most LLM services apply _rate limitations_ on a __per-tokens__ or __per-requests__ basis 
+
+{{%fragment%}}
+
+> __Solution__: apply [exponential back-off](https://en.wikipedia.org/wiki/Exponential_backoff) _retrial_ strategy + limit of _retries_ 
+
+{{%/fragment%}}
+
 
 {{%/section%}}
