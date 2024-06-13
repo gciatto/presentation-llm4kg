@@ -328,6 +328,21 @@ Each phase leverages templates of different sorts:
 {{%/col%}}
 {{%/multicol%}}
 
+--- 
+
+### Example (population)
+
+{{%multicol%}}
+{{%col 25%}}{{%/col %}}
+{{%col 25%}}
+![Uninstantiated ontology](http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuKhEIImkLWZ9oCnBvu9o7FCoSnDXCiw99L2MRtvfSIeN5rYfWasDhYvC8OG22u6K8_DXce322df5UdOGlfL2SaPYSMenMDX6BqSFBfoVdrtibb_4nLNBvP2Qbm9q8000)
+{{%/col%}}
+{{%col 10%}}$\xrightarrow{\text{after}}${{%/col %}}
+{{%col %}}
+![Populated ontology](http://www.plantuml.com/plantuml/svg/JOtD3S8m38NldY8B90EW2XKXSUF60g4D_I6f9JizL8A1c8F5g4mTzLH_h-zzgJbxodEAq4JFR6xzC7MmmMaQajS_Pv-twuep1m2fckfbhHR_7ucalcCTuNqCJJOPavvZ85eKEa-F8SHMcRwVj02iCeCsMjc9QKMosrRVaKOnb93iNkF87Oqe3gRfFGUMk7BHbHZnoHSaW3VKOMhd57y0)
+{{%/col%}}
+{{%/multicol%}}
+
 ---
 
 ## About phases (pt. 2)
@@ -354,6 +369,21 @@ Each phase leverages templates of different sorts:
 
 ---
 
+### Example (relation)
+
+{{%multicol%}}
+{{%col 25%}}{{%/col %}}
+{{%col 25%}}
+![Populated ontology](http://www.plantuml.com/plantuml/svg/JOtD3S8m38NldY8B90EW2XKXSUF60g4D_I6f9JizL8A1c8F5g4mTzLH_h-zzgJbxodEAq4JFR6xzC7MmmMaQajS_Pv-twuep1m2fckfbhHR_7ucalcCTuNqCJJOPavvZ85eKEa-F8SHMcRwVj02iCeCsMjc9QKMosrRVaKOnb93iNkF87Oqe3gRfFGUMk7BHbHZnoHSaW3VKOMhd57y0)
+{{%/col%}}
+{{%col 10%}}$\xrightarrow{\text{after}}${{%/col %}}
+{{%col %}}
+![Related ontology](http://www.plantuml.com/plantuml/svg/JOxDhSCW48JlMmKDB0KyMPQV8kMMMneWDl5Fm2ij-60fAIXrfB5OYo7cmiwmymrDY8RZuXsqpeIWhiCuzx2B_tdq9h-SJDod2ot10iYggfw8UJ5TOidwGUSGtIRRHXN9vt6op6iMlU7xQ5sNDN_UVWNOO8gmGya9AScKpJs43WlXPp8UCPfrdJxpfzh111l4hhJJnIPwX3Cnm5QdDcYTYaf0S0hbrANn67n1O-TkyUuB)
+{{%/col%}}
+{{%/multicol%}}
+
+---
+
 ## About phases (pt. 3)
 
 {{%multicol%}}
@@ -374,6 +404,21 @@ Each phase leverages templates of different sorts:
 4. Repeat for all _direct_ classes in $\mathcal{S}$
     + (this implies a _pre-order_-DFS traversal)
 
+{{%/col%}}
+{{%/multicol%}}
+
+---
+
+### Example (redistribute)
+
+{{%multicol%}}
+{{%col 25%}}{{%/col %}}
+{{%col 25%}}
+![Related ontology](http://www.plantuml.com/plantuml/svg/JOxDhSCW48JlMmKDB0KyMPQV8kMMMneWDl5Fm2ij-60fAIXrfB5OYo7cmiwmymrDY8RZuXsqpeIWhiCuzx2B_tdq9h-SJDod2ot10iYggfw8UJ5TOidwGUSGtIRRHXN9vt6op6iMlU7xQ5sNDN_UVWNOO8gmGya9AScKpJs43WlXPp8UCPfrdJxpfzh111l4hhJJnIPwX3Cnm5QdDcYTYaf0S0hbrANn67n1O-TkyUuB)
+{{%/col%}}
+{{%col 10%}}$\xrightarrow{\text{after}}${{%/col %}}
+{{%col %}}
+![Instantiated ontology](http://www.plantuml.com/plantuml/svg/JOxD3S8m38NlcI8BE0EWgYf2uiQD1K8R-aDIItPwG8A1c8F527KJzHI_zpw_kE5eAIx1gzPRPdqTnhbNcpZEOx0vETcuJHTSs2crehfw0MHG7h4IljTv2M-JQwEE6F8uEQAdKedN21siqGgBb3YP6WXgaGVT3fOTbxhUqdrqlikQlf-mxopvhbYOdEWA_EQbTiG7dv6amP2fvVpoxz-kZ3V5BWjlrRYvMuB_0G00)
 {{%/col%}}
 {{%/multicol%}}
 
