@@ -561,7 +561,8 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 </ol>
 </blockquote>
 <ul>
-<li>Q: <code>"you're a zoologist creating and ontology about animals species. give me a list of examples of cats"</code></li>
+<li>C: <code>"you're a zoologist creating and ontology about animals species."</code></li>
+<li>Q: <code>"give me a list of examples of cats"</code></li>
 <li>A:
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="nohighlight" data-noescape=""><span style="display:flex;"><span>Certainly! Here are some examples of cat breeds:
 </span></span><span style="display:flex;"><span>
@@ -620,6 +621,109 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 </span>
 
 </section>
+</section><section>
+<h2 id="experimental-setup">Experimental setup</h2>
+<p>Experiments tailored in the <em>nutritional domain</em></p>
+<p>Reference ontology (built for the purpose):
+<img src="./ontology_skeleton.svg" alt="Nutritional ontology"></p>
+<ul>
+<li>plus role: <strong>$Recipe \sqsubseteq \exists\mathsf{ingredientOf}.Edible$</strong> (all <em>recipes</em> are made of <em>edible</em> ingredients)</li>
+</ul>
+</section><section>
+<h2 id="experimented-llms">Experimented LLMs</h2>
+<p><img src="./experiments-llms.png" alt="LLM employed for our experiments"></p>
+</section><section>
+<h2 id="evaluation-criteria-pt-1">Evaluation criteria (pt. 1)</h2>
+<h3 id="types-of-errors">Types of errors</h3>
+<ul>
+<li>
+<p><strong>Misplacement</strong> error ($E_{mis}$): the <em>individual</em> “belongs” the ontology, but it is <em>assigned to the wrong class</em></p>
+<ul>
+<li>e.g. $\mathtt{garfield} : Aniamal$, when $Cat \sqsubset Animal$ exists</li>
+<li>or $\mathtt{tom} : Mouse$</li>
+</ul>
+</li>
+<li>
+<p><strong>Incorrect individual</strong> error ($E_{ii}$): the <em>individual makes no sense</em> in the ontology, yet it has a <em>meaningful</em> name</p>
+<ul>
+<li>e.g. $\mathtt{catwoman} : Cat$</li>
+</ul>
+</li>
+<li>
+<p><strong>Meaningless individual</strong> error ($E_{mi}$): the <em>individual</em> makes <em>no sense</em> <strong>at all</strong></p>
+<ul>
+<li>e.g. $\mathtt{asanaimodelblablabla} : Mouse$</li>
+</ul>
+</li>
+<li>
+<p><strong>Class-like individual</strong> ($E_{ci}$): the <em>individual</em> has a <em>name</em> which is <em>very similar</em> to the one of a <em>concept</em> in the ontology</p>
+<ul>
+<li>e.g. $\mathtt{cat} : Cat$</li>
+</ul>
+</li>
+<li>
+<p><strong>Duplicate individuals</strong> ($E_{di}$): the <em>individual</em> is a <em>semantic duplicate</em> of another one in the ontology</p>
+<ul>
+<li>e.g. $\mathtt{pussy}, \mathtt{kitty} : Cat$</li>
+</ul>
+</li>
+<li>
+<p><strong>Wrong relation</strong> ($E_{wr}$): the <em>relation</em> connecting <em>two individuals</em> is <em>semantically wrong</em></p>
+<ul>
+<li>e.g. $\mathsf{ingredientOf}(\mathtt{pineapple}, \mathtt{pizza})$ 😇</li>
+</ul>
+</li>
+</ul>
+</section><section>
+<h2 id="evaluation-criteria-pt-2">Evaluation criteria (pt. 2)</h2>
+<h3 id="metrics">Metrics</h3>
+<ul>
+<li><strong>$TI$</strong>: <em>total</em> amount of generated <em>individuals</em> in the whole ontology</li>
+<li><strong>$minCW$</strong> (resp. <strong>$maxCW$</strong>): minimum (resp. maximum) <em>class weight</em>, i.e. amount of individuals <em>in a class</em></li>
+<li><strong>$TL$</strong>: <em>total</em> amount of individuals in <strong>leaf</strong> classes</li>
+<li><strong>$TE$</strong>: <em>total</em> amount of individuals <em>affected by errors</em></li>
+<li><strong>$RIE = \frac{TE}{TI}$</strong>: <em>relative</em> amount of individuals <em>affected by errors</em> w.r.t. the <em>total</em> amount of individuals</li>
+<li><strong>$E_{mis}$</strong>, <strong>$E_{ii}$</strong>, <strong>$E_{mi}$</strong>, <strong>$E_{ci}$</strong>, <strong>$E_{di}$</strong>, <strong>$E_{wr}$</strong>: total amount of errors for each type of error</li>
+<li><strong>$TR$</strong>: <em>total</em> amount of <em>role</em> assertions in the whole ontology</li>
+<li><strong>$RRE = \frac{E_{wr}}{TR}$</strong>: <em>relative</em> amount of <em>role</em> assertions <em>affected by errors</em> w.r.t. the <em>total</em> amount of <em>role</em> assertions</li>
+</ul>
+</section><section>
+<h2 id="results">Results</h2>
+<p><img src="./experiments-results.png" alt="LLM employed for our experiments"></p>
+<ul>
+<li>Errors are spotted by <em>manual</em> inspection!</li>
+</ul>
+</section><section>
+<h2 id="highlights">Highlights</h2>
+<ul>
+<li><strong>Mistral</strong> gives the <em>bigger</em> ontolgoies, but with <code>~21.6%</code> $RIE$</li>
+<li><strong>GPT-3</strong> gives the <em>smaller</em> ontologies, but with <code>~8.6%</code> $RIE$</li>
+<li>Overall, most experiments’ $RIE$ is <em>below</em> <code>25%</code> (except for <strong>Mixtral</strong>)</li>
+<li><strong>GPT-*</strong> have the <em>best</em> $RIE$</li>
+</ul>
+</section><section>
+<h2 id="about-the-implementation">About the implementation</h2>
+<ul>
+<li>
+<p>Code: <a href="https://github.com/Chistera4-Expectation/kg-filler">https://github.com/Chistera4-Expectation/kg-filler</a></p>
+</li>
+<li>
+<p>Experiment data: <a href="https://github.com/Chistera4-Expectation/knowledge-graphs">https://github.com/Chistera4-Expectation/knowledge-graphs</a></p>
+<ul>
+<li>each experiment is on a different <em>branch</em>:
+<pre tabindex="0"><code>experiments/food-SERVICE-MODEL-DATE-HOUR-ID
+</code></pre></li>
+</ul>
+<p><img src="./experiments-branches.png" alt="Experiment branches on GitHub"></p>
+</li>
+</ul>
+</section><section>
+<h2 id="about-the-experiments">About the experiments</h2>
+<p>Each <em>commit</em> of each experiment <em>branch</em> represents a <em>consistent</em> update to the ontology:</p>
+<p><img src="./experiments-commits.png" alt="Commits in the experimental branches on GitHub"></p>
+<ul>
+<li>this was very useful in the <em>fine-tuning</em> phase of the algorithm</li>
+</ul>
 </section>
 
   
