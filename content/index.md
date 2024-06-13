@@ -479,7 +479,8 @@ Each phase leverages templates of different sorts:
 > 1. the _domain_ of the ontology
 > 2. the _ontological_ jargon itself
 
-- Q: `"you're a zoologist creating and ontology about animals species. give me a list of examples of cats"`
+- C: `"you're a zoologist creating and ontology about animals species."`
+- Q: `"give me a list of examples of cats"`
 - A: 
     ```text
     Certainly! Here are some examples of cat breeds:
@@ -550,5 +551,101 @@ Each phase leverages templates of different sorts:
 
 {{%/fragment%}}
 
-
 {{%/section%}}
+
+---
+
+## Experimental setup
+
+Experiments tailored in the _nutritional domain_
+
+Reference ontology (built for the purpose):
+![Nutritional ontology](./ontology_skeleton.svg)
+
++ plus role: __$Recipe \sqsubseteq \exists\mathsf{ingredientOf}.Edible$__ (all _recipes_ are made of _edible_ ingredients)
+
+---
+
+## Experimented LLMs
+
+![LLM employed for our experiments](./experiments-llms.png)
+
+---
+
+## Evaluation criteria (pt. 1)
+
+### Types of errors
+
+- __Misplacement__ error ($E_{mis}$): the _individual_ "belongs" the ontology, but it is _assigned to the wrong class_
+    + e.g. $\mathtt{garfield} : Aniamal$, when $Cat \sqsubset Animal$ exists
+    + or $\mathtt{tom} : Mouse$
+
+- __Incorrect individual__ error ($E_{ii}$): the _individual makes no sense_ in the ontology, yet it has a _meaningful_ name
+    + e.g. $\mathtt{catwoman} : Cat$
+
+- __Meaningless individual__ error ($E_{mi}$): the _individual_ makes _no sense_ __at all__
+    + e.g. $\mathtt{asanaimodelblablabla} : Mouse$
+
+- __Class-like individual__ ($E_{ci}$): the _individual_ has a _name_ which is _very similar_ to the one of a _concept_ in the ontology
+    + e.g. $\mathtt{cat} : Cat$
+
+- __Duplicate individuals__ ($E_{di}$): the _individual_ is a _semantic duplicate_ of another one in the ontology
+    + e.g. $\mathtt{pussy}, \mathtt{kitty} : Cat$
+
+- __Wrong relation__ ($E_{wr}$): the _relation_ connecting _two individuals_ is _semantically wrong_
+    + e.g. $\mathsf{ingredientOf}(\mathtt{pineapple}, \mathtt{pizza})$ 😇
+
+---
+
+## Evaluation criteria (pt. 2)
+
+### Metrics
+
+- __$TI$__: _total_ amount of generated _individuals_ in the whole ontology
+- __$minCW$__ (resp. __$maxCW$__): minimum (resp. maximum) _class weight_, i.e. amount of individuals _in a class_
+- __$TL$__: _total_ amount of individuals in __leaf__ classes
+- __$TE$__: _total_ amount of individuals _affected by errors_
+- __$RIE = \frac{TE}{TI}$__: _relative_ amount of individuals _affected by errors_ w.r.t. the _total_ amount of individuals
+- **$E_{mis}$**, **$E_{ii}$**, **$E_{mi}$**, **$E_{ci}$**, **$E_{di}$**, **$E_{wr}$**: total amount of errors for each type of error
+- __$TR$__: _total_ amount of _role_ assertions in the whole ontology
+- **$RRE = \frac{E_{wr}}{TR}$**: _relative_ amount of _role_ assertions _affected by errors_ w.r.t. the _total_ amount of _role_ assertions
+
+---
+
+## Results
+
+![LLM employed for our experiments](./experiments-results.png)
+
+- Errors are spotted by _manual_ inspection!
+
+---
+
+## Highlights
+
+- __Mistral__ gives the _bigger_ ontolgoies, but with `~21.6%` $RIE$
+- __GPT-3__ gives the _smaller_ ontologies, but with `~8.6%` $RIE$ 
+- Overall, most experiments' $RIE$ is _below_ `25%` (except for __Mixtral__)
+- __GPT-*__ have the _best_ $RIE$
+
+---
+
+## About the implementation
+
+- Code: <https://github.com/Chistera4-Expectation/kg-filler>
+- Experiment data: <https://github.com/Chistera4-Expectation/knowledge-graphs>
+    + each experiment is on a different _branch_:
+        ```
+        experiments/food-SERVICE-MODEL-DATE-HOUR-ID
+        ```
+
+    ![Experiment branches on GitHub](./experiments-branches.png)
+
+---
+
+## About the experiments
+
+
+Each _commit_ of each experiment _branch_ represents a _consistent_ update to the ontology: 
+
+![Commits in the experimental branches on GitHub](./experiments-commits.png)
++ this was very useful in the _fine-tuning_ phase of the algorithm
