@@ -1,12 +1,3 @@
 {{ $_hugo_config := `{ "version": 1 }` }}
-{{ $width := "50" }}
-{{ if .IsNamedParams }}
-  {{ with .Get "width" }}
-    {{ $width = . }}
-  {{ end }}
-{{ else }}
-  {{ with .Get 0 }}
-    {{ $width = . }}
-  {{ end }}
-{{ end }}
-<div style='width: {{ $width }}%; '>{{ .Inner }}</div>
+{{ $align := .Get "left" | default "center" }}
+<div class='col {{ .Get "class" }}' style="text-align: {{ $align }};">{{ .Inner }}</div>

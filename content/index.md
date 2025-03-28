@@ -13,22 +13,22 @@ aliases = [
 
 # Large language models as oracles for instantiating ontologies with domain-specific knowledge
 
-[Giovanni Ciatto](https://www.unibo.it/sitoweb/Giovanni.Ciatto/en), 
-[Andrea Agiollo](https://www.unibo.it/sitoweb/Andrea.Agiollo/en), 
-[Matteo Magnini](https://www.unibo.it/sitoweb/Matteo.Magnini/en), 
+[Giovanni Ciatto](https://www.unibo.it/sitoweb/Giovanni.Ciatto/en)$^\star$, 
+[Andrea Agiollo](https://www.tudelft.nl/ewi/over-de-faculteit/afdelingen/intelligent-systems/cybersecurity/people/andrea-agiollo)$^\dagger$, 
+[Matteo Magnini](https://www.unibo.it/sitoweb/Matteo.Magnini/en)$^\star$, 
 and
-[Andrea Omicini](https://www.unibo.it/sitoweb/Andrea.Omicini/en)
+[Andrea Omicini](https://www.unibo.it/sitoweb/Andrea.Omicini/en)$^\star$
 
-[Dept. of Computer Science and Engineering](https://disi.unibo.it/en) (DISI),
+<br/>
+
+$^\star$[Dept. of Computer Science and Engineering](https://disi.unibo.it/en) (DISI),
 Alma Mater Studiorum - [Università di Bologna](https://www.unibo.it/en/), Italy
 
-<br/>
-
-ArXiv preprint: [arXiv:2404.04108](https://arxiv.org/abs/2404.04108) 
+$^\dagger$[TU Delft](https://www.tudelft.nl/), The Netherlands
 
 <br/>
 
-(Currently under revision for the [Knowledge-Based Systems](https://www.sciencedirect.com/journal/knowledge-based-systems) journal.)
+(published in ["Knowledge Based Systems"](https://www.sciencedirect.com/journal/knowledge-based-systems): [10.1016/j.knosys.2024.112940](https://doi.org/10.1016/j.knosys.2024.112940))
 
 ---
 
@@ -116,9 +116,8 @@ Yet, the generated data should:
 ### Ontologies example
 
 {{%multicol%}}
-{{%col 25 %}}{{%/col%}}
 {{%col%}}
-![Overview on ontologies](http://www.plantuml.com/plantuml/svg/TL11JiCm4Bpx5Nji3_O3eYXgLS49n8LZBsxYfcuTErexY0hw0IwyWtVm4rw2oTgjBqXHlBCxCxkQbGyImpGODihs97i53wfNjeCt1j0QwJrid6tL66vu_jUr52SXHTCm1fa3zJj7tHy2JwmA_BIRowSzB7u-FfUH73-tEwesWBQTVj7T94tPYoT5jtysEDxnGbU1zcjOLD6NLcO2cTp630eLS8wSDmKDdL5Rkt088xfHOJWljnQYNoori-K5GZIqwggYEs_AI6ONTatqxbKEer4nKWhm-Q1jpn9OMpr8ay16XbGzkiahncRgNwey4-cXLgINE8jIaC4DkJmgn3DZ6qdvpQEPJ936iGaSUKEmWlOWlV9NkrxYNYlJPOpVNqFfcUUbCN7o16fkKY-wEtVozmx9GQ1ewFoyTsxNmWXgbu8BModRJOFv1G00)
+{{< image width="100%" src="http://www.plantuml.com/plantuml/svg/TL11JiCm4Bpx5Nji3_O3eYXgLS49n8LZBsxYfcuTErexY0hw0IwyWtVm4rw2oTgjBqXHlBCxCxkQbGyImpGODihs97i53wfNjeCt1j0QwJrid6tL66vu_jUr52SXHTCm1fa3zJj7tHy2JwmA_BIRowSzB7u-FfUH73-tEwesWBQTVj7T94tPYoT5jtysEDxnGbU1zcjOLD6NLcO2cTp630eLS8wSDmKDdL5Rkt088xfHOJWljnQYNoori-K5GZIqwggYEs_AI6ONTatqxbKEer4nKWhm-Q1jpn9OMpr8ay16XbGzkiahncRgNwey4-cXLgINE8jIaC4DkJmgn3DZ6qdvpQEPJ936iGaSUKEmWlOWlV9NkrxYNYlJPOpVNqFfcUUbCN7o16fkKY-wEtVozmx9GQ1ewFoyTsxNmWXgbu8BModRJOFv1G00" alt="Overview on ontologies" >}}
 {{%/col%}}
 {{%col%}}
 In $\mathcal{ALC}$ Description Logic:
@@ -205,7 +204,7 @@ Two possibly inter-leaved phases:
 
 ### Large Language Models (LLMs)
 
-![LLM concept](./llm-concept.svg)
+{{< image width="100%" max-h="50vh" src="./llm-concept.svg" alt="LLM concept" >}}
 
 - Text in (__query__, a.k.a. _prompt_) $\rightarrow$ Text out (__response__, a.k.a. _completion_)
 - __Pre-trained__ on the _publicly accessible_ Web (allegedly) $\Rightarrow$ plenty of _domain-specific_ knowledge, for most domains 
@@ -252,13 +251,15 @@ Let's discuss _how_!
 ### Example
 
 {{%multicol%}}
-{{%col 25%}}{{%/col %}}
-{{%col 25%}}
-![Uninstantiated ontology](http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuKhEIImkLWZ9oCnBvu9o7FCoSnDXCiw99L2MRtvfSIeN5rYfWasDhYvC8OG22u6K8_DXce322df5UdOGlfL2SaPYSMenMDX6BqSFBfoVdrtibb_4nLNBvP2Qbm9q8000)
+{{%col%}}
+{{< image width="90%" alt="Uninstantiated ontology" src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuKhEIImkLWZ9oCnBvu9o7FCoSnDXCiw99L2MRtvfSIeN5rYfWasDhYvC8OG22u6K8_DXce322df5UdOGlfL2SaPYSMenMDX6BqSFBfoVdrtibb_4nLNBvP2Qbm9q8000" >}}
+
+before
 {{%/col%}}
-{{%col 10%}}$\xrightarrow{\text{after}}${{%/col %}}
 {{%col %}}
-![Instantiated ontology](http://www.plantuml.com/plantuml/svg/JOxD3S8m38NlcI8BE0EWgYf2uiQD1K8R-aDIItPwG8A1c8F527KJzHI_zpw_kE5eAIx1gzPRPdqTnhbNcpZEOx0vETcuJHTSs2crehfw0MHG7h4IljTv2M-JQwEE6F8uEQAdKedN21siqGgBb3YP6WXgaGVT3fOTbxhUqdrqlikQlf-mxopvhbYOdEWA_EQbTiG7dv6amP2fvVpoxz-kZ3V5BWjlrRYvMuB_0G00)
+{{< image width="100%" alt="Instantiated ontology" src="http://www.plantuml.com/plantuml/svg/JOxD3S8m38NlcI8BE0EWgYf2uiQD1K8R-aDIItPwG8A1c8F527KJzHI_zpw_kE5eAIx1gzPRPdqTnhbNcpZEOx0vETcuJHTSs2crehfw0MHG7h4IljTv2M-JQwEE6F8uEQAdKedN21siqGgBb3YP6WXgaGVT3fOTbxhUqdrqlikQlf-mxopvhbYOdEWA_EQbTiG7dv6amP2fvVpoxz-kZ3V5BWjlrRYvMuB_0G00" >}}
+
+after
 {{%/col%}}
 {{%/multicol%}}
 
@@ -333,13 +334,15 @@ Each phase leverages templates of different sorts:
 ### Example (population)
 
 {{%multicol%}}
-{{%col 25%}}{{%/col %}}
-{{%col 25%}}
-![Uninstantiated ontology](http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuKhEIImkLWZ9oCnBvu9o7FCoSnDXCiw99L2MRtvfSIeN5rYfWasDhYvC8OG22u6K8_DXce322df5UdOGlfL2SaPYSMenMDX6BqSFBfoVdrtibb_4nLNBvP2Qbm9q8000)
+{{%col%}}
+{{< image width="100%" src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuKhEIImkLWZ9oCnBvu9o7FCoSnDXCiw99L2MRtvfSIeN5rYfWasDhYvC8OG22u6K8_DXce322df5UdOGlfL2SaPYSMenMDX6BqSFBfoVdrtibb_4nLNBvP2Qbm9q8000" alt="Uninstantiated ontology" >}}
+
+before
 {{%/col%}}
-{{%col 10%}}$\xrightarrow{\text{after}}${{%/col %}}
 {{%col %}}
-![Populated ontology](http://www.plantuml.com/plantuml/svg/JOtD3S8m38NldY8B90EW2XKXSUF60g4D_I6f9JizL8A1c8F5g4mTzLH_h-zzgJbxodEAq4JFR6xzC7MmmMaQajS_Pv-twuep1m2fckfbhHR_7ucalcCTuNqCJJOPavvZ85eKEa-F8SHMcRwVj02iCeCsMjc9QKMosrRVaKOnb93iNkF87Oqe3gRfFGUMk7BHbHZnoHSaW3VKOMhd57y0)
+{{< image width="100%" src="http://www.plantuml.com/plantuml/svg/JOtD3S8m38NldY8B90EW2XKXSUF60g4D_I6f9JizL8A1c8F5g4mTzLH_h-zzgJbxodEAq4JFR6xzC7MmmMaQajS_Pv-twuep1m2fckfbhHR_7ucalcCTuNqCJJOPavvZ85eKEa-F8SHMcRwVj02iCeCsMjc9QKMosrRVaKOnb93iNkF87Oqe3gRfFGUMk7BHbHZnoHSaW3VKOMhd57y0" >}}
+
+after
 {{%/col%}}
 {{%/multicol%}}
 
@@ -372,13 +375,15 @@ Each phase leverages templates of different sorts:
 ### Example (relation)
 
 {{%multicol%}}
-{{%col 25%}}{{%/col %}}
-{{%col 25%}}
-![Populated ontology](http://www.plantuml.com/plantuml/svg/JOtD3S8m38NldY8B90EW2XKXSUF60g4D_I6f9JizL8A1c8F5g4mTzLH_h-zzgJbxodEAq4JFR6xzC7MmmMaQajS_Pv-twuep1m2fckfbhHR_7ucalcCTuNqCJJOPavvZ85eKEa-F8SHMcRwVj02iCeCsMjc9QKMosrRVaKOnb93iNkF87Oqe3gRfFGUMk7BHbHZnoHSaW3VKOMhd57y0)
-{{%/col%}}
-{{%col 10%}}$\xrightarrow{\text{after}}${{%/col %}}
 {{%col %}}
-![Related ontology](http://www.plantuml.com/plantuml/svg/JOxDhSCW48JlMmKDB0KyMPQV8kMMMneWDl5Fm2ij-60fAIXrfB5OYo7cmiwmymrDY8RZuXsqpeIWhiCuzx2B_tdq9h-SJDod2ot10iYggfw8UJ5TOidwGUSGtIRRHXN9vt6op6iMlU7xQ5sNDN_UVWNOO8gmGya9AScKpJs43WlXPp8UCPfrdJxpfzh111l4hhJJnIPwX3Cnm5QdDcYTYaf0S0hbrANn67n1O-TkyUuB)
+{{< image width="100%" src="http://www.plantuml.com/plantuml/svg/JOtD3S8m38NldY8B90EW2XKXSUF60g4D_I6f9JizL8A1c8F5g4mTzLH_h-zzgJbxodEAq4JFR6xzC7MmmMaQajS_Pv-twuep1m2fckfbhHR_7ucalcCTuNqCJJOPavvZ85eKEa-F8SHMcRwVj02iCeCsMjc9QKMosrRVaKOnb93iNkF87Oqe3gRfFGUMk7BHbHZnoHSaW3VKOMhd57y0" >}}
+
+before
+{{%/col%}}
+{{%col %}}
+{{< image width="100%" src="http://www.plantuml.com/plantuml/svg/JOxDhSCW48JlMmKDB0KyMPQV8kMMMneWDl5Fm2ij-60fAIXrfB5OYo7cmiwmymrDY8RZuXsqpeIWhiCuzx2B_tdq9h-SJDod2ot10iYggfw8UJ5TOidwGUSGtIRRHXN9vt6op6iMlU7xQ5sNDN_UVWNOO8gmGya9AScKpJs43WlXPp8UCPfrdJxpfzh111l4hhJJnIPwX3Cnm5QdDcYTYaf0S0hbrANn67n1O-TkyUuB" >}}
+
+after
 {{%/col%}}
 {{%/multicol%}}
 
@@ -412,13 +417,15 @@ Each phase leverages templates of different sorts:
 ### Example (redistribute)
 
 {{%multicol%}}
-{{%col 25%}}{{%/col %}}
-{{%col 25%}}
-![Related ontology](http://www.plantuml.com/plantuml/svg/JOxDhSCW48JlMmKDB0KyMPQV8kMMMneWDl5Fm2ij-60fAIXrfB5OYo7cmiwmymrDY8RZuXsqpeIWhiCuzx2B_tdq9h-SJDod2ot10iYggfw8UJ5TOidwGUSGtIRRHXN9vt6op6iMlU7xQ5sNDN_UVWNOO8gmGya9AScKpJs43WlXPp8UCPfrdJxpfzh111l4hhJJnIPwX3Cnm5QdDcYTYaf0S0hbrANn67n1O-TkyUuB)
-{{%/col%}}
-{{%col 10%}}$\xrightarrow{\text{after}}${{%/col %}}
 {{%col %}}
-![Instantiated ontology](http://www.plantuml.com/plantuml/svg/JOxD3S8m38NlcI8BE0EWgYf2uiQD1K8R-aDIItPwG8A1c8F527KJzHI_zpw_kE5eAIx1gzPRPdqTnhbNcpZEOx0vETcuJHTSs2crehfw0MHG7h4IljTv2M-JQwEE6F8uEQAdKedN21siqGgBb3YP6WXgaGVT3fOTbxhUqdrqlikQlf-mxopvhbYOdEWA_EQbTiG7dv6amP2fvVpoxz-kZ3V5BWjlrRYvMuB_0G00)
+{{< image width="100%" alt="Related ontology" src="http://www.plantuml.com/plantuml/svg/JOxDhSCW48JlMmKDB0KyMPQV8kMMMneWDl5Fm2ij-60fAIXrfB5OYo7cmiwmymrDY8RZuXsqpeIWhiCuzx2B_tdq9h-SJDod2ot10iYggfw8UJ5TOidwGUSGtIRRHXN9vt6op6iMlU7xQ5sNDN_UVWNOO8gmGya9AScKpJs43WlXPp8UCPfrdJxpfzh111l4hhJJnIPwX3Cnm5QdDcYTYaf0S0hbrANn67n1O-TkyUuB" >}}
+
+before
+{{%/col%}}
+{{%col %}}
+{{< image width="100%" alt="Instantiated ontology" src="http://www.plantuml.com/plantuml/svg/JOxD3S8m38NlcI8BE0EWgYf2uiQD1K8R-aDIItPwG8A1c8F527KJzHI_zpw_kE5eAIx1gzPRPdqTnhbNcpZEOx0vETcuJHTSs2crehfw0MHG7h4IljTv2M-JQwEE6F8uEQAdKedN21siqGgBb3YP6WXgaGVT3fOTbxhUqdrqlikQlf-mxopvhbYOdEWA_EQbTiG7dv6amP2fvVpoxz-kZ3V5BWjlrRYvMuB_0G00" >}}
+
+after
 {{%/col%}}
 {{%/multicol%}}
 
@@ -650,13 +657,22 @@ Reference ontology (built for the purpose):
 ### Metrics
 
 - __$TI$__: _total_ amount of generated _individuals_ in the whole ontology
+
 - __$minCW$__ (resp. __$maxCW$__): minimum (resp. maximum) _class weight_, i.e. amount of individuals _in a class_
+
 - __$TL$__: _total_ amount of individuals in __leaf__ classes
+
 - __$TE$__: _total_ amount of individuals _affected by errors_
+
 - __$RIE = \frac{TE}{TI}$__: _relative_ amount of individuals _affected by errors_ w.r.t. the _total_ amount of individuals
+
 - **$E_{mis}$**, **$E_{ii}$**, **$E_{mi}$**, **$E_{ci}$**, **$E_{di}$**, **$E_{wr}$**: total amount of errors for each type of error
+
 - __$TR$__: _total_ amount of _role_ assertions in the whole ontology
+
 - **$RRE = \frac{E_{wr}}{TR}$**: _relative_ amount of _role_ assertions _affected by errors_ w.r.t. the _total_ amount of _role_ assertions
+
+- **$Q = \frac{TI - TE + TR - E_{wr}}{TI + TR} \in [0,1]$** overall _quality_ score (for the sake of comparison)
 
 ---
 
@@ -670,10 +686,23 @@ Reference ontology (built for the purpose):
 
 ## Highlights
 
-- __Mistral__ gives the _bigger_ ontolgoies, but with `~21.6%` $RIE$
-- __GPT-3__ gives the _smaller_ ontologies, but with `~8.6%` $RIE$ 
-- Overall, most experiments' $RIE$ is _below_ `25%` (except for __Mixtral__)
-- __GPT-*__ have the _best_ $RIE$
+- __Mistral__ gives the _bigger_ ontologies ($TI$), but with quality score ($Q$) `~77.4%`
+- __GPT-3.5__ gives _smaller_ ontologies ($TI$), but with far higher quality score `~92.4%` 
+- Overall, most experiments' $Q$ is _above_ `75%` (except for Gemma and Openchat)
+- __GPT-*__ have the _best_ $Q$
+
+---
+
+## Comparison with SOTA
+
+{{% multicol %}}
+{{% col %}}
+![](experiments-comparison-features.png)
+{{% /col %}}
+{{% col %}}
+![](experiments-comparison-performance.png)
+{{% /col %}}
+{{% /multicol %}}
 
 ---
 
