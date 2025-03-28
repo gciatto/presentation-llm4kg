@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/presentation-llm4kg/reveal-js/dist/reset.css">
 <link rel="stylesheet" href="/presentation-llm4kg/reveal-js/dist/reveal.css">
-  <link rel="stylesheet" href="/presentation-llm4kg/css/custom-theme.min.4b54f9888072cf8aa8e31eb65a5b8a5199067e1077158809361bb4ff9d8f0a0a.css" id="theme"><link rel="stylesheet" href="/presentation-llm4kg/highlight-js/solarized-dark.min.css">
+  <link rel="stylesheet" href="/presentation-llm4kg/css/custom-theme.min.7b9344b9d0bd418508043e04f94d5218b70749ceb4091766e0e5e886787563a7.css" id="theme"><link rel="stylesheet" href="/presentation-llm4kg/highlight-js/solarized-dark.min.css">
 <link rel="stylesheet" href="https://gitcdn.link/repo/DanySK/css-blur-animation/master/blur.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto Mono" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Oxygen Mono" rel="stylesheet">
@@ -24,17 +24,17 @@
   
 
     <section><h1 id="large-language-models-as-oracles-for-instantiating-ontologies-with-domain-specific-knowledge">Large language models as oracles for instantiating ontologies with domain-specific knowledge</h1>
-<p><a href="https://www.unibo.it/sitoweb/Giovanni.Ciatto/en">Giovanni Ciatto</a>,
-<a href="https://www.unibo.it/sitoweb/Andrea.Agiollo/en">Andrea Agiollo</a>,
-<a href="https://www.unibo.it/sitoweb/Matteo.Magnini/en">Matteo Magnini</a>,
+<p><a href="https://www.unibo.it/sitoweb/Giovanni.Ciatto/en">Giovanni Ciatto</a>$^\star$,
+<a href="https://www.tudelft.nl/ewi/over-de-faculteit/afdelingen/intelligent-systems/cybersecurity/people/andrea-agiollo">Andrea Agiollo</a>$^\dagger$,
+<a href="https://www.unibo.it/sitoweb/Matteo.Magnini/en">Matteo Magnini</a>$^\star$,
 and
-<a href="https://www.unibo.it/sitoweb/Andrea.Omicini/en">Andrea Omicini</a></p>
-<p><a href="https://disi.unibo.it/en">Dept. of Computer Science and Engineering</a> (DISI),
+<a href="https://www.unibo.it/sitoweb/Andrea.Omicini/en">Andrea Omicini</a>$^\star$</p>
+<br>
+<p>$^\star$<a href="https://disi.unibo.it/en">Dept. of Computer Science and Engineering</a> (DISI),
 Alma Mater Studiorum - <a href="https://www.unibo.it/en/">Università di Bologna</a>, Italy</p>
+<p>$^\dagger$<a href="https://www.tudelft.nl/">TU Delft</a>, The Netherlands</p>
 <br>
-<p>ArXiv preprint: <a href="https://arxiv.org/abs/2404.04108">arXiv:2404.04108</a></p>
-<br>
-<p>(Currently under revision for the <a href="https://www.sciencedirect.com/journal/knowledge-based-systems">Knowledge-Based Systems</a> journal.)</p>
+<p>(published in <a href="https://www.sciencedirect.com/journal/knowledge-based-systems">“Knowledge Based Systems”</a>: <a href="https://doi.org/10.1016/j.knosys.2024.112940">10.1016/j.knosys.2024.112940</a>)</p>
 </section><section>
 <h2 id="context-pt-1">Context (pt. 1)</h2>
 <h3 id="the-problem">The problem</h3>
@@ -141,10 +141,10 @@ Alma Mater Studiorum - <a href="https://www.unibo.it/en/">Università di Bologna
 </section><section>
 <h2 id="background-pt-2">Background (pt. 2)</h2>
 <h3 id="ontologies-example">Ontologies example</h3>
-<div class="multiCol "><div style="width: 25%; "></div>
-<div style="width: 50%; "><p><img src="http://www.plantuml.com/plantuml/svg/TL11JiCm4Bpx5Nji3_O3eYXgLS49n8LZBsxYfcuTErexY0hw0IwyWtVm4rw2oTgjBqXHlBCxCxkQbGyImpGODihs97i53wfNjeCt1j0QwJrid6tL66vu_jUr52SXHTCm1fa3zJj7tHy2JwmA_BIRowSzB7u-FfUH73-tEwesWBQTVj7T94tPYoT5jtysEDxnGbU1zcjOLD6NLcO2cTp630eLS8wSDmKDdL5Rkt088xfHOJWljnQYNoori-K5GZIqwggYEs_AI6ONTatqxbKEer4nKWhm-Q1jpn9OMpr8ay16XbGzkiahncRgNwey4-cXLgINE8jIaC4DkJmgn3DZ6qdvpQEPJ936iGaSUKEmWlOWlV9NkrxYNYlJPOpVNqFfcUUbCN7o16fkKY-wEtVozmx9GQ1ewFoyTsxNmWXgbu8BModRJOFv1G00" alt="Overview on ontologies"></p>
+<div class="container w-100 m-0 p-0">
+    <div class="row "><div class="col " style="text-align: center;"><img src="http://www.plantuml.com/plantuml/svg/TL11JiCm4Bpx5Nji3_O3eYXgLS49n8LZBsxYfcuTErexY0hw0IwyWtVm4rw2oTgjBqXHlBCxCxkQbGyImpGODihs97i53wfNjeCt1j0QwJrid6tL66vu_jUr52SXHTCm1fa3zJj7tHy2JwmA_BIRowSzB7u-FfUH73-tEwesWBQTVj7T94tPYoT5jtysEDxnGbU1zcjOLD6NLcO2cTp630eLS8wSDmKDdL5Rkt088xfHOJWljnQYNoori-K5GZIqwggYEs_AI6ONTatqxbKEer4nKWhm-Q1jpn9OMpr8ay16XbGzkiahncRgNwey4-cXLgINE8jIaC4DkJmgn3DZ6qdvpQEPJ936iGaSUKEmWlOWlV9NkrxYNYlJPOpVNqFfcUUbCN7o16fkKY-wEtVozmx9GQ1ewFoyTsxNmWXgbu8BModRJOFv1G00" alt="Overview on ontologies" style="width: 100%; max-width: 95vw; max-height: 80vh; object-fit: contain;">
 </div>
-<div style="width: 50%; "><p>In $\mathcal{ALC}$ Description Logic:</p>
+<div class="col " style="text-align: center;"><p>In $\mathcal{ALC}$ Description Logic:</p>
 <ul>
 <li>$Animal \sqsubset \top$</li>
 <li>$Cat, Mouse \sqsubset Animal$</li>
@@ -155,6 +155,7 @@ Alma Mater Studiorum - <a href="https://www.unibo.it/en/">Università di Bologna
 <li>$\mathsf{chases}(\mathtt{tom}, \mathtt{jerry})$</li>
 <li>$\mathsf{cooksFor}(\mathtt{rémy}, \mathtt{garfield})$</li>
 </ul>
+</div>
 </div>
 </div>
 </section><section>
@@ -247,7 +248,13 @@ Alma Mater Studiorum - <a href="https://www.unibo.it/en/">Università di Bologna
 </section><section>
 <h2 id="background-pt-6">Background (pt. 6)</h2>
 <h3 id="large-language-models-llms">Large Language Models (LLMs)</h3>
-<p><img src="./llm-concept.svg" alt="LLM concept"></p>
+
+
+
+
+
+<img src="./llm-concept.svg" alt="LLM concept" style="width: 100%; max-width: 95vw; max-height: 50vh; object-fit: contain;">
+
 <ul>
 <li>Text in (<strong>query</strong>, a.k.a. <em>prompt</em>) $\rightarrow$ Text out (<strong>response</strong>, a.k.a. <em>completion</em>)</li>
 <li><strong>Pre-trained</strong> on the <em>publicly accessible</em> Web (allegedly) $\Rightarrow$ plenty of <em>domain-specific</em> knowledge, for most domains</li>
@@ -306,11 +313,13 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 <h2 id="problem-statement-pt-2">Problem statement (pt. 2)</h2>
 <h3 id="example-2">Example</h3>
 
-<div class="multiCol "><div style="width: 25%; "></div>
-<div style="width: 25%; "><p><img src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuKhEIImkLWZ9oCnBvu9o7FCoSnDXCiw99L2MRtvfSIeN5rYfWasDhYvC8OG22u6K8_DXce322df5UdOGlfL2SaPYSMenMDX6BqSFBfoVdrtibb_4nLNBvP2Qbm9q8000" alt="Uninstantiated ontology"></p>
+<div class="container w-100 m-0 p-0">
+    <div class="row "><div class="col " style="text-align: center;"><img src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuKhEIImkLWZ9oCnBvu9o7FCoSnDXCiw99L2MRtvfSIeN5rYfWasDhYvC8OG22u6K8_DXce322df5UdOGlfL2SaPYSMenMDX6BqSFBfoVdrtibb_4nLNBvP2Qbm9q8000" alt="Uninstantiated ontology" style="width: 90%; max-width: 95vw; max-height: 80vh; object-fit: contain;">
+<p>before</p>
 </div>
-<div style="width: 10%; ">$\xrightarrow{\text{after}}$</div>
-<div style="width: 50%; "><p><img src="http://www.plantuml.com/plantuml/svg/JOxD3S8m38NlcI8BE0EWgYf2uiQD1K8R-aDIItPwG8A1c8F527KJzHI_zpw_kE5eAIx1gzPRPdqTnhbNcpZEOx0vETcuJHTSs2crehfw0MHG7h4IljTv2M-JQwEE6F8uEQAdKedN21siqGgBb3YP6WXgaGVT3fOTbxhUqdrqlikQlf-mxopvhbYOdEWA_EQbTiG7dv6amP2fvVpoxz-kZ3V5BWjlrRYvMuB_0G00" alt="Instantiated ontology"></p>
+<div class="col " style="text-align: center;"><img src="http://www.plantuml.com/plantuml/svg/JOxD3S8m38NlcI8BE0EWgYf2uiQD1K8R-aDIItPwG8A1c8F527KJzHI_zpw_kE5eAIx1gzPRPdqTnhbNcpZEOx0vETcuJHTSs2crehfw0MHG7h4IljTv2M-JQwEE6F8uEQAdKedN21siqGgBb3YP6WXgaGVT3fOTbxhUqdrqlikQlf-mxopvhbYOdEWA_EQbTiG7dv6amP2fvVpoxz-kZ3V5BWjlrRYvMuB_0G00" alt="Instantiated ontology" style="width: 100%; max-width: 95vw; max-height: 80vh; object-fit: contain;">
+<p>after</p>
+</div>
 </div>
 </div>
 </section><section>
@@ -368,11 +377,12 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 <section data-shortcode-section="">
 <h2 id="about-phases-pt-1">About phases (pt. 1)</h2>
 <h3 id="population-phase">Population phase</h3>
-<div class="multiCol "><!-- 
-<div style='width: 25%; '></div> -->
-<div style="width: 50%; "><p><img src="./phase-population.png" alt="Population phase pseudocode"></p>
+<div class="container w-100 m-0 p-0">
+    <div class="row "><!-- 
+<div class='col ' style="text-align: center;"></div> -->
+<div class="col " style="text-align: center;"><p><img src="./phase-population.png" alt="Population phase pseudocode"></p>
 </div>
-<div style="width: 50%; "><ol>
+<div class="col " style="text-align: center;"><ol>
 <li>
 <p>Focus on some class $R \in \mathcal{C}$ (most commonly <code>Thing</code>)</p>
 </li>
@@ -390,23 +400,27 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 </ol>
 </div>
 </div>
+</div>
 </section><section>
 <h3 id="example-population">Example (population)</h3>
-<div class="multiCol "><div style="width: 25%; "></div>
-<div style="width: 25%; "><p><img src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuKhEIImkLWZ9oCnBvu9o7FCoSnDXCiw99L2MRtvfSIeN5rYfWasDhYvC8OG22u6K8_DXce322df5UdOGlfL2SaPYSMenMDX6BqSFBfoVdrtibb_4nLNBvP2Qbm9q8000" alt="Uninstantiated ontology"></p>
+<div class="container w-100 m-0 p-0">
+    <div class="row "><div class="col " style="text-align: center;"><img src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuKhEIImkLWZ9oCnBvu9o7FCoSnDXCiw99L2MRtvfSIeN5rYfWasDhYvC8OG22u6K8_DXce322df5UdOGlfL2SaPYSMenMDX6BqSFBfoVdrtibb_4nLNBvP2Qbm9q8000" alt="Uninstantiated ontology" style="width: 100%; max-width: 95vw; max-height: 80vh; object-fit: contain;">
+<p>before</p>
 </div>
-<div style="width: 10%; ">$\xrightarrow{\text{after}}$</div>
-<div style="width: 50%; "><p><img src="http://www.plantuml.com/plantuml/svg/JOtD3S8m38NldY8B90EW2XKXSUF60g4D_I6f9JizL8A1c8F5g4mTzLH_h-zzgJbxodEAq4JFR6xzC7MmmMaQajS_Pv-twuep1m2fckfbhHR_7ucalcCTuNqCJJOPavvZ85eKEa-F8SHMcRwVj02iCeCsMjc9QKMosrRVaKOnb93iNkF87Oqe3gRfFGUMk7BHbHZnoHSaW3VKOMhd57y0" alt="Populated ontology"></p>
+<div class="col " style="text-align: center;"><img src="http://www.plantuml.com/plantuml/svg/JOtD3S8m38NldY8B90EW2XKXSUF60g4D_I6f9JizL8A1c8F5g4mTzLH_h-zzgJbxodEAq4JFR6xzC7MmmMaQajS_Pv-twuep1m2fckfbhHR_7ucalcCTuNqCJJOPavvZ85eKEa-F8SHMcRwVj02iCeCsMjc9QKMosrRVaKOnb93iNkF87Oqe3gRfFGUMk7BHbHZnoHSaW3VKOMhd57y0" alt="" style="width: 100%; max-width: 95vw; max-height: 80vh; object-fit: contain;">
+<p>after</p>
+</div>
 </div>
 </div>
 </section><section>
 <h2 id="about-phases-pt-2">About phases (pt. 2)</h2>
 <h3 id="relate-phase">Relate phase</h3>
-<div class="multiCol "><!-- 
-<div style='width: 25%; '></div> -->
-<div style="width: 50%; "><p><img src="./phase-relation.png" alt="Relation phase pseudocode"></p>
+<div class="container w-100 m-0 p-0">
+    <div class="row "><!-- 
+<div class='col ' style="text-align: center;"></div> -->
+<div class="col " style="text-align: center;"><p><img src="./phase-relation.png" alt="Relation phase pseudocode"></p>
 </div>
-<div style="width: 50%; "><ol>
+<div class="col " style="text-align: center;"><ol>
 <li>
 <p>Focus on some property $\mathsf{p} \in \mathcal{P}$</p>
 </li>
@@ -427,22 +441,26 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 </ol>
 </div>
 </div>
+</div>
 </section><section>
 <h3 id="example-relation">Example (relation)</h3>
-<div class="multiCol "><div style="width: 25%; "></div>
-<div style="width: 25%; "><p><img src="http://www.plantuml.com/plantuml/svg/JOtD3S8m38NldY8B90EW2XKXSUF60g4D_I6f9JizL8A1c8F5g4mTzLH_h-zzgJbxodEAq4JFR6xzC7MmmMaQajS_Pv-twuep1m2fckfbhHR_7ucalcCTuNqCJJOPavvZ85eKEa-F8SHMcRwVj02iCeCsMjc9QKMosrRVaKOnb93iNkF87Oqe3gRfFGUMk7BHbHZnoHSaW3VKOMhd57y0" alt="Populated ontology"></p>
+<div class="container w-100 m-0 p-0">
+    <div class="row "><div class="col " style="text-align: center;"><img src="http://www.plantuml.com/plantuml/svg/JOtD3S8m38NldY8B90EW2XKXSUF60g4D_I6f9JizL8A1c8F5g4mTzLH_h-zzgJbxodEAq4JFR6xzC7MmmMaQajS_Pv-twuep1m2fckfbhHR_7ucalcCTuNqCJJOPavvZ85eKEa-F8SHMcRwVj02iCeCsMjc9QKMosrRVaKOnb93iNkF87Oqe3gRfFGUMk7BHbHZnoHSaW3VKOMhd57y0" alt="" style="width: 100%; max-width: 95vw; max-height: 80vh; object-fit: contain;">
+<p>before</p>
 </div>
-<div style="width: 10%; ">$\xrightarrow{\text{after}}$</div>
-<div style="width: 50%; "><p><img src="http://www.plantuml.com/plantuml/svg/JOxDhSCW48JlMmKDB0KyMPQV8kMMMneWDl5Fm2ij-60fAIXrfB5OYo7cmiwmymrDY8RZuXsqpeIWhiCuzx2B_tdq9h-SJDod2ot10iYggfw8UJ5TOidwGUSGtIRRHXN9vt6op6iMlU7xQ5sNDN_UVWNOO8gmGya9AScKpJs43WlXPp8UCPfrdJxpfzh111l4hhJJnIPwX3Cnm5QdDcYTYaf0S0hbrANn67n1O-TkyUuB" alt="Related ontology"></p>
+<div class="col " style="text-align: center;"><img src="http://www.plantuml.com/plantuml/svg/JOxDhSCW48JlMmKDB0KyMPQV8kMMMneWDl5Fm2ij-60fAIXrfB5OYo7cmiwmymrDY8RZuXsqpeIWhiCuzx2B_tdq9h-SJDod2ot10iYggfw8UJ5TOidwGUSGtIRRHXN9vt6op6iMlU7xQ5sNDN_UVWNOO8gmGya9AScKpJs43WlXPp8UCPfrdJxpfzh111l4hhJJnIPwX3Cnm5QdDcYTYaf0S0hbrANn67n1O-TkyUuB" alt="" style="width: 100%; max-width: 95vw; max-height: 80vh; object-fit: contain;">
+<p>after</p>
+</div>
 </div>
 </div>
 </section><section>
 <h2 id="about-phases-pt-3">About phases (pt. 3)</h2>
-<div class="multiCol "><!-- 
-<div style='width: 25%; '></div> -->
-<div style="width: 50%; "><p><img src="./phase-redistribution.png" alt="Redistribution phase pseudocode"></p>
+<div class="container w-100 m-0 p-0">
+    <div class="row "><!-- 
+<div class='col ' style="text-align: center;"></div> -->
+<div class="col " style="text-align: center;"><p><img src="./phase-redistribution.png" alt="Redistribution phase pseudocode"></p>
 </div>
-<div style="width: 50%; "><ol>
+<div class="col " style="text-align: center;"><ol>
 <li>
 <p>Focus on some class $R \in \mathcal{C}$ (most commonly <code>Thing</code>)</p>
 </li>
@@ -469,22 +487,26 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 </ol>
 </div>
 </div>
+</div>
 </section><section>
 <h3 id="example-redistribute">Example (redistribute)</h3>
-<div class="multiCol "><div style="width: 25%; "></div>
-<div style="width: 25%; "><p><img src="http://www.plantuml.com/plantuml/svg/JOxDhSCW48JlMmKDB0KyMPQV8kMMMneWDl5Fm2ij-60fAIXrfB5OYo7cmiwmymrDY8RZuXsqpeIWhiCuzx2B_tdq9h-SJDod2ot10iYggfw8UJ5TOidwGUSGtIRRHXN9vt6op6iMlU7xQ5sNDN_UVWNOO8gmGya9AScKpJs43WlXPp8UCPfrdJxpfzh111l4hhJJnIPwX3Cnm5QdDcYTYaf0S0hbrANn67n1O-TkyUuB" alt="Related ontology"></p>
+<div class="container w-100 m-0 p-0">
+    <div class="row "><div class="col " style="text-align: center;"><img src="http://www.plantuml.com/plantuml/svg/JOxDhSCW48JlMmKDB0KyMPQV8kMMMneWDl5Fm2ij-60fAIXrfB5OYo7cmiwmymrDY8RZuXsqpeIWhiCuzx2B_tdq9h-SJDod2ot10iYggfw8UJ5TOidwGUSGtIRRHXN9vt6op6iMlU7xQ5sNDN_UVWNOO8gmGya9AScKpJs43WlXPp8UCPfrdJxpfzh111l4hhJJnIPwX3Cnm5QdDcYTYaf0S0hbrANn67n1O-TkyUuB" alt="Related ontology" style="width: 100%; max-width: 95vw; max-height: 80vh; object-fit: contain;">
+<p>before</p>
 </div>
-<div style="width: 10%; ">$\xrightarrow{\text{after}}$</div>
-<div style="width: 50%; "><p><img src="http://www.plantuml.com/plantuml/svg/JOxD3S8m38NlcI8BE0EWgYf2uiQD1K8R-aDIItPwG8A1c8F527KJzHI_zpw_kE5eAIx1gzPRPdqTnhbNcpZEOx0vETcuJHTSs2crehfw0MHG7h4IljTv2M-JQwEE6F8uEQAdKedN21siqGgBb3YP6WXgaGVT3fOTbxhUqdrqlikQlf-mxopvhbYOdEWA_EQbTiG7dv6amP2fvVpoxz-kZ3V5BWjlrRYvMuB_0G00" alt="Instantiated ontology"></p>
+<div class="col " style="text-align: center;"><img src="http://www.plantuml.com/plantuml/svg/JOxD3S8m38NlcI8BE0EWgYf2uiQD1K8R-aDIItPwG8A1c8F527KJzHI_zpw_kE5eAIx1gzPRPdqTnhbNcpZEOx0vETcuJHTSs2crehfw0MHG7h4IljTv2M-JQwEE6F8uEQAdKedN21siqGgBb3YP6WXgaGVT3fOTbxhUqdrqlikQlf-mxopvhbYOdEWA_EQbTiG7dv6amP2fvVpoxz-kZ3V5BWjlrRYvMuB_0G00" alt="Instantiated ontology" style="width: 100%; max-width: 95vw; max-height: 80vh; object-fit: contain;">
+<p>after</p>
+</div>
 </div>
 </div>
 </section><section>
 <h2 id="about-phases-pt-4">About phases (pt. 4)</h2>
-<div class="multiCol "><!-- 
-<div style='width: 25%; '></div> -->
-<div style="width: 50%; "><p><img src="./phase-merging.png" alt="Merging phase pseudocode"></p>
+<div class="container w-100 m-0 p-0">
+    <div class="row "><!-- 
+<div class='col ' style="text-align: center;"></div> -->
+<div class="col " style="text-align: center;"><p><img src="./phase-merging.png" alt="Merging phase pseudocode"></p>
 </div>
-<div style="width: 50%; "><ol>
+<div class="col " style="text-align: center;"><ol>
 <li>
 <p>Focus on some class $R \in \mathcal{C}$ (most commonly <code>Thing</code>)</p>
 </li>
@@ -504,6 +526,7 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 </ol>
 </li>
 </ol>
+</div>
 </div>
 </div>
 
@@ -607,9 +630,11 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 <h3 id="mining-relevant-information-from-responses-1">Mining relevant information from responses</h3>
 <blockquote>
 <p><strong>Solution</strong>: <em>parse</em> the response to <em>extract</em> the relevant information</p></blockquote>
-<div class="multiCol "><div style="width: 50%; "><p><img src="parsing-grammar.png" alt="Grammar for parsing responses"></p>
+<div class="container w-100 m-0 p-0">
+    <div class="row "><div class="col " style="text-align: center;"><p><img src="parsing-grammar.png" alt="Grammar for parsing responses"></p>
 </div>
-<div style="width: 50%; "><p><img src="./parse-tree.svg" alt="Example of parse tree for the response in the previous slide according to this grammar"></p>
+<div class="col " style="text-align: center;"><p><img src="./parse-tree.svg" alt="Example of parse tree for the response in the previous slide according to this grammar"></p>
+</div>
 </div>
 </div>
 </section><section>
@@ -693,14 +718,33 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 <h2 id="evaluation-criteria-pt-2">Evaluation criteria (pt. 2)</h2>
 <h3 id="metrics">Metrics</h3>
 <ul>
-<li><strong>$TI$</strong>: <em>total</em> amount of generated <em>individuals</em> in the whole ontology</li>
-<li><strong>$minCW$</strong> (resp. <strong>$maxCW$</strong>): minimum (resp. maximum) <em>class weight</em>, i.e. amount of individuals <em>in a class</em></li>
-<li><strong>$TL$</strong>: <em>total</em> amount of individuals in <strong>leaf</strong> classes</li>
-<li><strong>$TE$</strong>: <em>total</em> amount of individuals <em>affected by errors</em></li>
-<li><strong>$RIE = \frac{TE}{TI}$</strong>: <em>relative</em> amount of individuals <em>affected by errors</em> w.r.t. the <em>total</em> amount of individuals</li>
-<li><strong>$E_{mis}$</strong>, <strong>$E_{ii}$</strong>, <strong>$E_{mi}$</strong>, <strong>$E_{ci}$</strong>, <strong>$E_{di}$</strong>, <strong>$E_{wr}$</strong>: total amount of errors for each type of error</li>
-<li><strong>$TR$</strong>: <em>total</em> amount of <em>role</em> assertions in the whole ontology</li>
-<li><strong>$RRE = \frac{E_{wr}}{TR}$</strong>: <em>relative</em> amount of <em>role</em> assertions <em>affected by errors</em> w.r.t. the <em>total</em> amount of <em>role</em> assertions</li>
+<li>
+<p><strong>$TI$</strong>: <em>total</em> amount of generated <em>individuals</em> in the whole ontology</p>
+</li>
+<li>
+<p><strong>$minCW$</strong> (resp. <strong>$maxCW$</strong>): minimum (resp. maximum) <em>class weight</em>, i.e. amount of individuals <em>in a class</em></p>
+</li>
+<li>
+<p><strong>$TL$</strong>: <em>total</em> amount of individuals in <strong>leaf</strong> classes</p>
+</li>
+<li>
+<p><strong>$TE$</strong>: <em>total</em> amount of individuals <em>affected by errors</em></p>
+</li>
+<li>
+<p><strong>$RIE = \frac{TE}{TI}$</strong>: <em>relative</em> amount of individuals <em>affected by errors</em> w.r.t. the <em>total</em> amount of individuals</p>
+</li>
+<li>
+<p><strong>$E_{mis}$</strong>, <strong>$E_{ii}$</strong>, <strong>$E_{mi}$</strong>, <strong>$E_{ci}$</strong>, <strong>$E_{di}$</strong>, <strong>$E_{wr}$</strong>: total amount of errors for each type of error</p>
+</li>
+<li>
+<p><strong>$TR$</strong>: <em>total</em> amount of <em>role</em> assertions in the whole ontology</p>
+</li>
+<li>
+<p><strong>$RRE = \frac{E_{wr}}{TR}$</strong>: <em>relative</em> amount of <em>role</em> assertions <em>affected by errors</em> w.r.t. the <em>total</em> amount of <em>role</em> assertions</p>
+</li>
+<li>
+<p><strong>$Q = \frac{TI - TE + TR - E_{wr}}{TI + TR} \in [0,1]$</strong> overall <em>quality</em> score (for the sake of comparison)</p>
+</li>
 </ul>
 </section><section>
 <h2 id="results">Results</h2>
@@ -711,11 +755,21 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 </section><section>
 <h2 id="highlights">Highlights</h2>
 <ul>
-<li><strong>Mistral</strong> gives the <em>bigger</em> ontolgoies, but with <code>~21.6%</code> $RIE$</li>
-<li><strong>GPT-3</strong> gives the <em>smaller</em> ontologies, but with <code>~8.6%</code> $RIE$</li>
-<li>Overall, most experiments’ $RIE$ is <em>below</em> <code>25%</code> (except for <strong>Mixtral</strong>)</li>
-<li><strong>GPT-*</strong> have the <em>best</em> $RIE$</li>
+<li><strong>Mistral</strong> gives the <em>bigger</em> ontologies ($TI$), but with quality score ($Q$) <code>~77.4%</code></li>
+<li><strong>GPT-3.5</strong> gives <em>smaller</em> ontologies ($TI$), but with far higher quality score <code>~92.4%</code></li>
+<li>Overall, most experiments’ $Q$ is <em>above</em> <code>75%</code> (except for Gemma and Openchat)</li>
+<li><strong>GPT-*</strong> have the <em>best</em> $Q$</li>
 </ul>
+</section><section>
+<h2 id="comparison-with-sota">Comparison with SOTA</h2>
+
+<div class="container w-100 m-0 p-0">
+    <div class="row "><div class="col " style="text-align: center;"><p><img src="experiments-comparison-features.png" alt=""></p>
+</div>
+<div class="col " style="text-align: center;"><p><img src="experiments-comparison-performance.png" alt=""></p>
+</div>
+</div>
+</div>
 </section><section>
 <h2 id="about-the-implementation">About the implementation</h2>
 <ul>
