@@ -1,14 +1,14 @@
 <!DOCTYPE html><html lang="en"><head>
-	<meta name="generator" content="Hugo 0.127.0">
+	<meta name="generator" content="Hugo 0.144.2">
     <meta charset="utf-8">
 <title>Large language models as oracles for instantiating ontologies with domain-specific knowledge</title>
 <meta name="description" content="Presentation for the paper 'Large language models as oracles for instantiating ontologies with domain-specific knowledge'">
-<meta name="author" content="Giovanni Ciatto">
+
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/presentation-llm4kg/reveal-js/dist/reset.css">
 <link rel="stylesheet" href="/presentation-llm4kg/reveal-js/dist/reveal.css">
-  <link rel="stylesheet" href="/presentation-llm4kg/css/custom-theme.min.8819225ba9045f059db0ec8e63c9fe9ecc945835383b0c2425763b28285adb6f.css" id="theme"><link rel="stylesheet" href="/presentation-llm4kg/highlight-js/solarized-dark.min.css">
+  <link rel="stylesheet" href="/presentation-llm4kg/css/custom-theme.min.4b54f9888072cf8aa8e31eb65a5b8a5199067e1077158809361bb4ff9d8f0a0a.css" id="theme"><link rel="stylesheet" href="/presentation-llm4kg/highlight-js/solarized-dark.min.css">
 <link rel="stylesheet" href="https://gitcdn.link/repo/DanySK/css-blur-animation/master/blur.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto Mono" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Oxygen Mono" rel="stylesheet">
@@ -91,8 +91,7 @@ Alma Mater Studiorum - <a href="https://www.unibo.it/en/">Università di Bologna
 <h2 id="context-pt-3">Context (pt. 3)</h2>
 <h3 id="the-insight">The insight</h3>
 <blockquote>
-<p>Obvious solution: <em>generating</em> (i.e., synthesizing) data</p>
-</blockquote>
+<p>Obvious solution: <em>generating</em> (i.e., synthesizing) data</p></blockquote>
 <br>
 <p>Yet, the generated data should:</p>
 <ul>
@@ -216,8 +215,7 @@ Alma Mater Studiorum - <a href="https://www.unibo.it/en/">Università di Bologna
 <ul>
 <li>this is often done <em>manually</em></li>
 <li>called “ontology <strong>learning</strong>” when done <em>(semi-)automatically</em> from data</li>
-</ul>
-</blockquote>
+</ul></blockquote>
 </span>
 </section><section>
 <h2 id="background-pt-5">Background (pt. 5)</h2>
@@ -261,8 +259,7 @@ Alma Mater Studiorum - <a href="https://www.unibo.it/en/">Università di Bologna
 <blockquote>
 <p><strong>Insight</strong>: replace domain experts with <em>large language models</em> (LLMs),
 <br>
-treating them as <strong>oracles</strong> for <em>automating</em> ontology population</p>
-</blockquote>
+treating them as <strong>oracles</strong> for <em>automating</em> ontology population</p></blockquote>
 <p>Let’s discuss <em>how</em>!</p>
 </section><section>
 <h2 id="problem-statement-pt-1">Problem statement (pt. 1)</h2>
@@ -345,8 +342,7 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 </section><section>
 <h2 id="about-templates">About templates</h2>
 <blockquote>
-<p><strong>Templates</strong> $\approx$ a string <em>named placeholders</em> to be <em>filled</em> with actual values via <em>interpolation</em></p>
-</blockquote>
+<p><strong>Templates</strong> $\approx$ a string <em>named placeholders</em> to be <em>filled</em> with actual values via <em>interpolation</em></p></blockquote>
 <ul>
 <li>think of them as C’s <code>printf</code> format strings
 <ul>
@@ -519,8 +515,7 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 <h2 id="practical-aspects">Practical aspects</h2>
 <h3 id="prompt-engineering-pt-1">Prompt-engineering (pt. 1)</h3>
 <blockquote>
-<p><strong>Problem</strong>: queries may produce <em>verbose</em> and <em>arbitrarily-structured</em> responses, which are <em>costly</em> and hard to <em>parse</em></p>
-</blockquote>
+<p><strong>Problem</strong>: queries may produce <em>verbose</em> and <em>arbitrarily-structured</em> responses, which are <em>costly</em> and hard to <em>parse</em></p></blockquote>
 <ul>
 <li>Q: <code>"can you generate examples of cats?"</code></li>
 <li>A:
@@ -547,8 +542,7 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 <h2 id="practical-aspects-1">Practical aspects</h2>
 <h3 id="prompt-engineering-pt-2">Prompt-engineering (pt. 2)</h3>
 <blockquote>
-<p><strong>Solution</strong>: queries should explicitly ask for <strong>conciseness</strong> and <strong>structure</strong> to <em>spend less</em> <br> and <em>simplify parsing</em> the response</p>
-</blockquote>
+<p><strong>Solution</strong>: queries should explicitly ask for <strong>conciseness</strong> and <strong>structure</strong> to <em>spend less</em> <br> and <em>simplify parsing</em> the response</p></blockquote>
 <ul>
 <li>Q: <code>"list of cat races, names only"</code></li>
 <li>A:
@@ -565,8 +559,7 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 <h3 id="avoiding-out-of-context-responses">Avoiding out-of-context responses</h3>
 <blockquote>
 <p><strong>Problem</strong>: the query may be clear for the user, but <em>ambiguous</em> for the LLM,
-<br> which may lead to <em>out-of-context</em> responses</p>
-</blockquote>
+<br> which may lead to <em>out-of-context</em> responses</p></blockquote>
 <ul>
 <li>Q: <code>"give me a list of examples of cats"</code></li>
 <li>A:
@@ -587,8 +580,7 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 <ol>
 <li>the <em>domain</em> of the ontology</li>
 <li>the <em>ontological</em> jargon itself</li>
-</ol>
-</blockquote>
+</ol></blockquote>
 <ul>
 <li>C: <code>"you're a zoologist creating and ontology about animals species."</code></li>
 <li>Q: <code>"give me a list of examples of cats"</code></li>
@@ -605,8 +597,7 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 <h2 id="practical-aspects-4">Practical aspects</h2>
 <h3 id="mining-relevant-information-from-responses">Mining relevant information from responses</h3>
 <blockquote>
-<p><strong>Problem</strong>: responses contain <em>way more</em> information than needed, in <em>unstructured</em> form</p>
-</blockquote>
+<p><strong>Problem</strong>: responses contain <em>way more</em> information than needed, in <em>unstructured</em> form</p></blockquote>
 <p><img src="./response.png" alt="Example of partially structured response"></p>
 <ol>
 <li><code>Persian</code>, 2. <code>Siamese</code>, 3. <code>Maine Coon</code>, 4. <code>Bengal</code>, 5. <code>Caracal</code>, 6. <code>Sphinx</code>, …, 10. <code>Domestic Shorthair</code></li>
@@ -615,8 +606,7 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 <h2 id="practical-aspects-5">Practical aspects</h2>
 <h3 id="mining-relevant-information-from-responses-1">Mining relevant information from responses</h3>
 <blockquote>
-<p><strong>Solution</strong>: <em>parse</em> the response to <em>extract</em> the relevant information</p>
-</blockquote>
+<p><strong>Solution</strong>: <em>parse</em> the response to <em>extract</em> the relevant information</p></blockquote>
 <div class="multiCol "><div style="width: 50%; "><p><img src="parsing-grammar.png" alt="Grammar for parsing responses"></p>
 </div>
 <div style="width: 50%; "><p><img src="./parse-tree.svg" alt="Example of parse tree for the response in the previous slide according to this grammar"></p>
@@ -626,12 +616,10 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 <h2 id="practical-aspects-6">Practical aspects</h2>
 <h3 id="minimising-financial-costs">Minimising financial costs</h3>
 <blockquote>
-<p><strong>Problem</strong>: cost model is most commonly <em>proportional</em> to <strong>consumed</strong> <em>and</em> <strong>produced</strong> <em>tokens</em> (words)</p>
-</blockquote>
+<p><strong>Problem</strong>: cost model is most commonly <em>proportional</em> to <strong>consumed</strong> <em>and</em> <strong>produced</strong> <em>tokens</em> (words)</p></blockquote>
 <span class="fragment ">
   <blockquote>
-<p><strong>Solution</strong>: ask for <em>conciseness</em> + <em>limit</em> responses’ lengths + exploit <em>caching</em></p>
-</blockquote>
+<p><strong>Solution</strong>: ask for <em>conciseness</em> + <em>limit</em> responses’ lengths + exploit <em>caching</em></p></blockquote>
 <ul>
 <li>most <em>API</em> support some <code>max_tokens</code>-like parameter</li>
 <li>simple <em>cache mechanism</em> can be implemented, using <em>prompt</em> + <em>parameters</em> as <strong>key</strong></li>
@@ -641,12 +629,10 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 <h2 id="practical-aspects-7">Practical aspects</h2>
 <h3 id="handling-rate-limitations">Handling rate limitations</h3>
 <blockquote>
-<p><strong>Problem</strong>: most LLM services apply <em>rate limitations</em> on a <strong>per-tokens</strong> or <strong>per-requests</strong> basis</p>
-</blockquote>
+<p><strong>Problem</strong>: most LLM services apply <em>rate limitations</em> on a <strong>per-tokens</strong> or <strong>per-requests</strong> basis</p></blockquote>
 <span class="fragment ">
   <blockquote>
-<p><strong>Solution</strong>: apply <a href="https://en.wikipedia.org/wiki/Exponential_backoff">exponential back-off</a> <em>retrial</em> strategy + limit of <em>retries</em></p>
-</blockquote>
+<p><strong>Solution</strong>: apply <a href="https://en.wikipedia.org/wiki/Exponential_backoff">exponential back-off</a> <em>retrial</em> strategy + limit of <em>retries</em></p></blockquote>
 </span>
 
 </section>
@@ -806,7 +792,7 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 
   var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
 
-  var revealHugoPlugins = { 
+  var revealHugoPlugins = {
     plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
    };
   var revealHugoSiteParams = JSON.parse(document.getElementById('reveal-hugo-site-params').innerHTML);
@@ -825,11 +811,17 @@ treating them as <strong>oracles</strong> for <em>automating</em> ontology popul
 
 
 
+
+  
   
 
   
+  
 
   
+  
+
+
 
 
 
