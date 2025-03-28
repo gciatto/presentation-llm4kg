@@ -117,7 +117,7 @@ Yet, the generated data should:
 
 {{%multicol%}}
 {{%col%}}
-{{< image width="100%" src="http://www.plantuml.com/plantuml/svg/TL11JiCm4Bpx5Nji3_O3eYXgLS49n8LZBsxYfcuTErexY0hw0IwyWtVm4rw2oTgjBqXHlBCxCxkQbGyImpGODihs97i53wfNjeCt1j0QwJrid6tL66vu_jUr52SXHTCm1fa3zJj7tHy2JwmA_BIRowSzB7u-FfUH73-tEwesWBQTVj7T94tPYoT5jtysEDxnGbU1zcjOLD6NLcO2cTp630eLS8wSDmKDdL5Rkt088xfHOJWljnQYNoori-K5GZIqwggYEs_AI6ONTatqxbKEer4nKWhm-Q1jpn9OMpr8ay16XbGzkiahncRgNwey4-cXLgINE8jIaC4DkJmgn3DZ6qdvpQEPJ936iGaSUKEmWlOWlV9NkrxYNYlJPOpVNqFfcUUbCN7o16fkKY-wEtVozmx9GQ1ewFoyTsxNmWXgbu8BModRJOFv1G00" alt="Overview on ontologies" >}}
+{{< image width="100%" max-h="80vh" src="http://www.plantuml.com/plantuml/svg/TL11JiCm4Bpx5Nji3_O3eYXgLS49n8LZBsxYfcuTErexY0hw0IwyWtVm4rw2oTgjBqXHlBCxCxkQbGyImpGODihs97i53wfNjeCt1j0QwJrid6tL66vu_jUr52SXHTCm1fa3zJj7tHy2JwmA_BIRowSzB7u-FfUH73-tEwesWBQTVj7T94tPYoT5jtysEDxnGbU1zcjOLD6NLcO2cTp630eLS8wSDmKDdL5Rkt088xfHOJWljnQYNoori-K5GZIqwggYEs_AI6ONTatqxbKEer4nKWhm-Q1jpn9OMpr8ay16XbGzkiahncRgNwey4-cXLgINE8jIaC4DkJmgn3DZ6qdvpQEPJ936iGaSUKEmWlOWlV9NkrxYNYlJPOpVNqFfcUUbCN7o16fkKY-wEtVozmx9GQ1ewFoyTsxNmWXgbu8BModRJOFv1G00" alt="Overview on ontologies" >}}
 {{%/col%}}
 {{%col%}}
 In $\mathcal{ALC}$ Description Logic:
@@ -252,12 +252,12 @@ Let's discuss _how_!
 
 {{%multicol%}}
 {{%col%}}
-{{< image width="90%" alt="Uninstantiated ontology" src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuKhEIImkLWZ9oCnBvu9o7FCoSnDXCiw99L2MRtvfSIeN5rYfWasDhYvC8OG22u6K8_DXce322df5UdOGlfL2SaPYSMenMDX6BqSFBfoVdrtibb_4nLNBvP2Qbm9q8000" >}}
+{{< image width="90%" max-h="80vh" alt="Uninstantiated ontology" src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuKhEIImkLWZ9oCnBvu9o7FCoSnDXCiw99L2MRtvfSIeN5rYfWasDhYvC8OG22u6K8_DXce322df5UdOGlfL2SaPYSMenMDX6BqSFBfoVdrtibb_4nLNBvP2Qbm9q8000" >}}
 
 before
 {{%/col%}}
 {{%col %}}
-{{< image width="100%" alt="Instantiated ontology" src="http://www.plantuml.com/plantuml/svg/JOxD3S8m38NlcI8BE0EWgYf2uiQD1K8R-aDIItPwG8A1c8F527KJzHI_zpw_kE5eAIx1gzPRPdqTnhbNcpZEOx0vETcuJHTSs2crehfw0MHG7h4IljTv2M-JQwEE6F8uEQAdKedN21siqGgBb3YP6WXgaGVT3fOTbxhUqdrqlikQlf-mxopvhbYOdEWA_EQbTiG7dv6amP2fvVpoxz-kZ3V5BWjlrRYvMuB_0G00" >}}
+{{< image width="100%" max-h="80vh" alt="Instantiated ontology" src="http://www.plantuml.com/plantuml/svg/JOxD3S8m38NlcI8BE0EWgYf2uiQD1K8R-aDIItPwG8A1c8F527KJzHI_zpw_kE5eAIx1gzPRPdqTnhbNcpZEOx0vETcuJHTSs2crehfw0MHG7h4IljTv2M-JQwEE6F8uEQAdKedN21siqGgBb3YP6WXgaGVT3fOTbxhUqdrqlikQlf-mxopvhbYOdEWA_EQbTiG7dv6amP2fvVpoxz-kZ3V5BWjlrRYvMuB_0G00" >}}
 
 after
 {{%/col%}}
@@ -335,12 +335,12 @@ Each phase leverages templates of different sorts:
 
 {{%multicol%}}
 {{%col%}}
-{{< image width="100%" src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuKhEIImkLWZ9oCnBvu9o7FCoSnDXCiw99L2MRtvfSIeN5rYfWasDhYvC8OG22u6K8_DXce322df5UdOGlfL2SaPYSMenMDX6BqSFBfoVdrtibb_4nLNBvP2Qbm9q8000" alt="Uninstantiated ontology" >}}
+{{< image width="100%" max-h="80vh" src="http://www.plantuml.com/plantuml/svg/SoWkIImgAStDuKhEIImkLWZ9oCnBvu9o7FCoSnDXCiw99L2MRtvfSIeN5rYfWasDhYvC8OG22u6K8_DXce322df5UdOGlfL2SaPYSMenMDX6BqSFBfoVdrtibb_4nLNBvP2Qbm9q8000" alt="Uninstantiated ontology" >}}
 
 before
 {{%/col%}}
 {{%col %}}
-{{< image width="100%" src="http://www.plantuml.com/plantuml/svg/JOtD3S8m38NldY8B90EW2XKXSUF60g4D_I6f9JizL8A1c8F5g4mTzLH_h-zzgJbxodEAq4JFR6xzC7MmmMaQajS_Pv-twuep1m2fckfbhHR_7ucalcCTuNqCJJOPavvZ85eKEa-F8SHMcRwVj02iCeCsMjc9QKMosrRVaKOnb93iNkF87Oqe3gRfFGUMk7BHbHZnoHSaW3VKOMhd57y0" >}}
+{{< image width="100%" max-h="80vh" src="http://www.plantuml.com/plantuml/svg/JOtD3S8m38NldY8B90EW2XKXSUF60g4D_I6f9JizL8A1c8F5g4mTzLH_h-zzgJbxodEAq4JFR6xzC7MmmMaQajS_Pv-twuep1m2fckfbhHR_7ucalcCTuNqCJJOPavvZ85eKEa-F8SHMcRwVj02iCeCsMjc9QKMosrRVaKOnb93iNkF87Oqe3gRfFGUMk7BHbHZnoHSaW3VKOMhd57y0" >}}
 
 after
 {{%/col%}}
@@ -376,12 +376,12 @@ after
 
 {{%multicol%}}
 {{%col %}}
-{{< image width="100%" src="http://www.plantuml.com/plantuml/svg/JOtD3S8m38NldY8B90EW2XKXSUF60g4D_I6f9JizL8A1c8F5g4mTzLH_h-zzgJbxodEAq4JFR6xzC7MmmMaQajS_Pv-twuep1m2fckfbhHR_7ucalcCTuNqCJJOPavvZ85eKEa-F8SHMcRwVj02iCeCsMjc9QKMosrRVaKOnb93iNkF87Oqe3gRfFGUMk7BHbHZnoHSaW3VKOMhd57y0" >}}
+{{< image width="100%" max-h="80vh" src="http://www.plantuml.com/plantuml/svg/JOtD3S8m38NldY8B90EW2XKXSUF60g4D_I6f9JizL8A1c8F5g4mTzLH_h-zzgJbxodEAq4JFR6xzC7MmmMaQajS_Pv-twuep1m2fckfbhHR_7ucalcCTuNqCJJOPavvZ85eKEa-F8SHMcRwVj02iCeCsMjc9QKMosrRVaKOnb93iNkF87Oqe3gRfFGUMk7BHbHZnoHSaW3VKOMhd57y0" >}}
 
 before
 {{%/col%}}
 {{%col %}}
-{{< image width="100%" src="http://www.plantuml.com/plantuml/svg/JOxDhSCW48JlMmKDB0KyMPQV8kMMMneWDl5Fm2ij-60fAIXrfB5OYo7cmiwmymrDY8RZuXsqpeIWhiCuzx2B_tdq9h-SJDod2ot10iYggfw8UJ5TOidwGUSGtIRRHXN9vt6op6iMlU7xQ5sNDN_UVWNOO8gmGya9AScKpJs43WlXPp8UCPfrdJxpfzh111l4hhJJnIPwX3Cnm5QdDcYTYaf0S0hbrANn67n1O-TkyUuB" >}}
+{{< image width="100%" max-h="80vh" src="http://www.plantuml.com/plantuml/svg/JOxDhSCW48JlMmKDB0KyMPQV8kMMMneWDl5Fm2ij-60fAIXrfB5OYo7cmiwmymrDY8RZuXsqpeIWhiCuzx2B_tdq9h-SJDod2ot10iYggfw8UJ5TOidwGUSGtIRRHXN9vt6op6iMlU7xQ5sNDN_UVWNOO8gmGya9AScKpJs43WlXPp8UCPfrdJxpfzh111l4hhJJnIPwX3Cnm5QdDcYTYaf0S0hbrANn67n1O-TkyUuB" >}}
 
 after
 {{%/col%}}
@@ -418,12 +418,12 @@ after
 
 {{%multicol%}}
 {{%col %}}
-{{< image width="100%" alt="Related ontology" src="http://www.plantuml.com/plantuml/svg/JOxDhSCW48JlMmKDB0KyMPQV8kMMMneWDl5Fm2ij-60fAIXrfB5OYo7cmiwmymrDY8RZuXsqpeIWhiCuzx2B_tdq9h-SJDod2ot10iYggfw8UJ5TOidwGUSGtIRRHXN9vt6op6iMlU7xQ5sNDN_UVWNOO8gmGya9AScKpJs43WlXPp8UCPfrdJxpfzh111l4hhJJnIPwX3Cnm5QdDcYTYaf0S0hbrANn67n1O-TkyUuB" >}}
+{{< image width="100%" max-h="80vh" alt="Related ontology" src="http://www.plantuml.com/plantuml/svg/JOxDhSCW48JlMmKDB0KyMPQV8kMMMneWDl5Fm2ij-60fAIXrfB5OYo7cmiwmymrDY8RZuXsqpeIWhiCuzx2B_tdq9h-SJDod2ot10iYggfw8UJ5TOidwGUSGtIRRHXN9vt6op6iMlU7xQ5sNDN_UVWNOO8gmGya9AScKpJs43WlXPp8UCPfrdJxpfzh111l4hhJJnIPwX3Cnm5QdDcYTYaf0S0hbrANn67n1O-TkyUuB" >}}
 
 before
 {{%/col%}}
 {{%col %}}
-{{< image width="100%" alt="Instantiated ontology" src="http://www.plantuml.com/plantuml/svg/JOxD3S8m38NlcI8BE0EWgYf2uiQD1K8R-aDIItPwG8A1c8F527KJzHI_zpw_kE5eAIx1gzPRPdqTnhbNcpZEOx0vETcuJHTSs2crehfw0MHG7h4IljTv2M-JQwEE6F8uEQAdKedN21siqGgBb3YP6WXgaGVT3fOTbxhUqdrqlikQlf-mxopvhbYOdEWA_EQbTiG7dv6amP2fvVpoxz-kZ3V5BWjlrRYvMuB_0G00" >}}
+{{< image width="100%" max-h="80vh" alt="Instantiated ontology" src="http://www.plantuml.com/plantuml/svg/JOxD3S8m38NlcI8BE0EWgYf2uiQD1K8R-aDIItPwG8A1c8F527KJzHI_zpw_kE5eAIx1gzPRPdqTnhbNcpZEOx0vETcuJHTSs2crehfw0MHG7h4IljTv2M-JQwEE6F8uEQAdKedN21siqGgBb3YP6WXgaGVT3fOTbxhUqdrqlikQlf-mxopvhbYOdEWA_EQbTiG7dv6amP2fvVpoxz-kZ3V5BWjlrRYvMuB_0G00" >}}
 
 after
 {{%/col%}}
@@ -710,11 +710,7 @@ Reference ontology (built for the purpose):
 
 - Code: <https://github.com/Chistera4-Expectation/kg-filler>
 - Experiment data: <https://github.com/Chistera4-Expectation/knowledge-graphs>
-    + each experiment is on a different _branch_:
-        ```
-        experiments/food-SERVICE-MODEL-DATE-HOUR-ID
-        ```
-
+    + each experiment is on a different _branch_: `experiments/food-SERVICE-MODEL-DATE-HOUR-ID`
     ![Experiment branches on GitHub](./experiments-branches.png)
 
 ---
